@@ -1,0 +1,56 @@
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+#social-media {
+    background-color: #ff8700;
+}
+
+.footer-links {
+    background-color: #343a40;
+    color: white;
+    margin-top: 2rem;
+}
+
+.fa-angle-right {
+    color: #ff8700;
+}
+
+.links {
+    color: lightgray;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+.dropdown-item {
+    color: white;
+}
+
+a.dropdown-item:hover {
+    text-decoration: none;
+    color: lightgray;
+    background-color: black;
+}
+
+.media-icon:hover {
+    text-decoration: none;
+    color: white;
+}
+
+.dropdown-menu {
+    background-color: #30353ae5;
+}
+
+.social-media-list {
+    color: white;
+}
+
+.footer-copyright {
+    color: white;
+    background-color: lightdark;
+    text-align: center;
+}

@@ -1,0 +1,53 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #drawer class="sidenav" #sidenav (keydown.escape)="close('escape')">
+        <mat-toolbar class="navbar-dark bg-dark text-white">
+            <span><mat-icon>person</mat-icon> Hello {{ user }}</span>
+
+        </mat-toolbar>
+        <mat-nav-list>
+            <a mat-list-item class="text-muted" href="#">RENT BY CATEGORY</a>
+            <a mat-list-item href="#">Gardening<span class="spacer"></span><mat-icon>keyboard_arrow_right</mat-icon></a>
+            <a mat-list-item href="#">Wood<span class="spacer"></span><mat-icon>keyboard_arrow_right</mat-icon></a>
+            <a mat-list-item href="#">Plumbing<span class="spacer"></span><mat-icon>keyboard_arrow_right</mat-icon></a>
+        </mat-nav-list>
+        <hr>
+        <mat-nav-list>
+            <a mat-list-item class="text-muted" href="#">HELP & SETTINGS</a>
+            <a mat-list-item>Your Account</a>
+            <a mat-list-item>
+                <mat-icon>language</mat-icon>English
+            </a>
+            <a mat-list-item>Help</a>
+            <a mat-list-item>Sign In</a>
+        </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <mat-toolbar class="navbar-dark bg-dark">
+            <button class="text-white" type="button" aria-label="Toggle sidenav" mat-icon-button (click)="sidenav.open()">
+              <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+            </button>
+            <a class="navbar-brand" href="#">
+                <img src="assets/images/logo3.png" width="80" height="80" alt="">
+            </a>
+            <span class="spacer"></span>
+            <mat-nav-list>
+                <a class="nav-link navbar-text" href="#">Home</a>
+                <a class="nav-link navbar-text" href="#">Categories</a>
+                <a class="nav-link navbar-text" href="#">About us</a>
+                <a class="nav-link navbar-text" href="#">
+                    <span>
+                        <i class="fas fa-sign-in-alt"></i>
+                    </span> Sign Up
+                </a>
+                <a class="nav-link navbar-text" href="#">
+                    <span>
+                      <i class="fas fa-user "></i>
+                    </span> Login
+                </a>
+            </mat-nav-list>
+        </mat-toolbar>
+        <ng-content></ng-content>
+        <!-- Add Content Here -->
+    </mat-sidenav-content>
+</mat-sidenav-container>
