@@ -9,6 +9,9 @@ import { AppComponent } from './app.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { FooterComponent } from './footer/footer.component';
 import { ProductComponent } from './product/product.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
+import { ProductPageComponent } from './product-page/product-page.component';
+import { CategoriasComponent} from './categorias/categorias.component';
 /**
  * Material Modules
  */
@@ -23,8 +26,11 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { LayoutModule } from '@angular/cdk/layout';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/products', pathMatch: 'full'},
-  {path: 'products', component: ProductComponent}
+  {path: '', redirectTo: '/LandingPage', pathMatch: 'full'},
+  {path: 'products', component: ProductComponent},
+  {path: 'productsPage', component: ProductPageComponent},
+  {path: 'LandingPage', component: LandingPageComponent},
+  {path: 'categorias', component: CategoriasComponent}
 ]
 
 @NgModule({
@@ -33,6 +39,9 @@ const routes: Routes = [
     SidenavComponent,
     FooterComponent,
     ProductComponent,
+    LandingPageComponent,
+    CategoriasComponent,
+    ProductPageComponent
   ],
   imports: [
     BrowserModule,

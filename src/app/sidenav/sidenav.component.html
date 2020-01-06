@@ -5,10 +5,10 @@
 
         </mat-toolbar>
         <mat-nav-list>
-            <a mat-list-item class="text-muted" href="#">RENT BY CATEGORY</a>
-            <a mat-list-item href="#">Gardening<span class="spacer"></span><mat-icon>keyboard_arrow_right</mat-icon></a>
-            <a mat-list-item href="#">Wood<span class="spacer"></span><mat-icon>keyboard_arrow_right</mat-icon></a>
-            <a mat-list-item href="#">Plumbing<span class="spacer"></span><mat-icon>keyboard_arrow_right</mat-icon></a>
+          <a mat-list-item class="text-muted" href="#">RENT BY CATEGORY</a>
+          <a mat-list-item routerLink="/categorias">Mechanics<span class="spacer"></span><mat-icon>keyboard_arrow_right</mat-icon></a>
+          <a mat-list-item routerLink="/categorias">Carpentry<span class="spacer"></span><mat-icon>keyboard_arrow_right</mat-icon></a>
+          <a mat-list-item routerLink="/categorias">Electricity<span class="spacer"></span><mat-icon>keyboard_arrow_right</mat-icon></a>
         </mat-nav-list>
         <hr>
         <mat-nav-list>
@@ -27,13 +27,22 @@
             <button class="text-white" type="button" aria-label="Toggle sidenav" mat-icon-button (click)="sidenav.open()">
               <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
             </button>
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" routerLink="/LandingPage">
                 <img src="assets/images/logo3.png" width="80" height="80" alt="">
             </a>
             <span class="spacer"></span>
             <mat-nav-list>
-                <a class="nav-link navbar-text" href="#">Home</a>
-                <a class="nav-link navbar-text" href="#">Categories</a>
+                <a class="nav-link navbar-text" routerLink="/LandingPage">Home</a>
+                <a class="nav-link navbar-text dropdown-toggle mt-3 mb-4"  id="dropdownMenuButton" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
+
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" routerLink="/categorias"><i class='fas fa-angle-right'></i> Mechanics</a>
+                    <br>
+                    <a class="dropdown-item" routerLink="/categorias"><i class='fas fa-angle-right'></i> Carpentry</a>
+                    <br>
+                    <a class="dropdown-item" routerLink="/categorias"><i class='fas fa-angle-right'></i> Electricity</a>
+                </div>
+
                 <a class="nav-link navbar-text" href="#">About us</a>
                 <a class="nav-link navbar-text" href="#">
                     <span>
