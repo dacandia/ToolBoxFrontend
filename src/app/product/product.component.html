@@ -1,0 +1,48 @@
+<div class="card bg-light mb-3">
+    <div class="card-header">Your Products</div>
+    <div class="card-body">
+        <h5 class="card-title">List of Products</h5>
+
+        <div class="my-2 text-left">
+            <button class="btn btn-rounded btn-success" type="button" [routerLink]="['/products/form']">Add Product</button>
+        </div>
+        <div *ngIf="products?.length==0" class="alert-info">
+            There are no records in the database.
+        </div>
+        <table class="table table-hover" *ngIf="products?.length>0">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Product Name</th>
+                    <th scope="col">Brand</th>
+                    <th scope="col">Model</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Created At</th>
+                    <th scope="col">Update</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of products">
+                    <th scope="row">{{ product.productId }}</th>
+                    <td>{{ product.productName }}</td>
+                    <td>{{ product.productBrand }}</td>
+                    <td>{{ product.productModel }}</td>
+                    <td>{{ product.productDescription }}</td>
+                    <td>{{ product.productPrice }}</td>
+                    <td>{{ product.productQuantity }}</td>
+                    <td>{{ product.productDate }}</td>
+                    <td>
+                        <button type="button" name="update" [routerLink]="['/products/form', product.productId]" class="btn btn-info">Update</button>
+                    </td>
+                    <td>
+                        <button type="button" name="delete" (click)='delete(product)' class="btn btn-danger">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <paginator-nav *ngIf="paginator" [paginator]="paginator"></paginator-nav>
+    </div>
+</div>

@@ -9,6 +9,13 @@ import { AppComponent } from './app.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { FooterComponent } from './footer/footer.component';
 import { ProductComponent } from './product/product.component';
+import { FormProductComponent } from './product/formproduct.component';
+import { PaginatorComponent } from './paginator/paginator.component';
+import {ImageProductComponent} from './product/images/imageproduct.component';
+/**
+ * Services
+ */
+import { ProductService } from './product/product.service';
 /**
  * Material Modules
  */
@@ -21,10 +28,16 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { LayoutModule } from '@angular/cdk/layout';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {path: '', redirectTo: '/products', pathMatch: 'full'},
-  {path: 'products', component: ProductComponent}
+  {path: 'products', component: ProductComponent},
+  {path: 'products/page/:page', component: ProductComponent},
+  {path: 'products/form', component: FormProductComponent},
+  {path: 'products/form/:id', component: FormProductComponent},
+  {path: 'products/upload/:id', component: ImageProductComponent}
 ]
 
 @NgModule({
@@ -33,6 +46,9 @@ const routes: Routes = [
     SidenavComponent,
     FooterComponent,
     ProductComponent,
+    FormProductComponent,
+    PaginatorComponent,
+    ImageProductComponent
   ],
   imports: [
     BrowserModule,
@@ -46,9 +62,11 @@ const routes: Routes = [
     MatListModule,
     MatCheckboxModule,
     LayoutModule,
+    HttpClientModule,
+    FormsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
