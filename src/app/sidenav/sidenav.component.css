@@ -1,13 +1,13 @@
+.main-nav {
+    background-color: #f92a19;
+}
+
 .sidenav-container {
     height: 100%;
 }
 
 .sidenav {
     width: auto;
-}
-
-.sidenav .mat-toolbar {
-    background: inherit;
 }
 
 .mat-toolbar {
@@ -28,5 +28,5 @@
 }
 
 .navbar-text {
-    color: #ff8700;
+    color: #f7f4f4;
 }

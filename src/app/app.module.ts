@@ -42,7 +42,7 @@ const routes: Routes = [
   {path: '', redirectTo: '/LandingPage', pathMatch: 'full'},
   {path: 'products', component: ProductComponent},
   {path: 'productsPage', component: ProductPageComponent},
-  {path: 'LandingPage', component: LandingPageComponent},
+  {path: 'landing_page', component: LandingPageComponent},
   {path: 'categorias', component: CategoriasComponent},
   {path: 'products/page/:page', component: ProductComponent},
   {path: 'products/form', component: FormProductComponent},
