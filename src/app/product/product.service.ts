@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 @Injectable()
 export class ProductService{
     private urlEndPoint:string = 'http://localhost:8080/renter/products';
+    private urlEndPointImg: string = 'http://localhost:8080/renter/uploads/img';
     private httpHeaders = new HttpHeaders({'Content-Type':'application/json'})
 
     constructor(private http: HttpClient, private router: Router){  }
@@ -39,8 +40,13 @@ export class ProductService{
         )
     }
 
-    createProduct(product: Product): Observable<Product>{
-        return this.http.post(this.urlEndPoint, product,{headers: this.httpHeaders}).pipe(
+    createProduct(product: Product, images: File[]): Observable<Product>{
+        let formData = new FormData();
+        for(let image of images){
+            formData.append("images", image);
+        }
+        formData.append("product", JSON.stringify(product));
+        return this.http.post(this.urlEndPoint, formData).pipe(
             map( (response: any) => response.product as Product),
             catchError(e => {
                 if(e.status == 400){
@@ -86,16 +92,12 @@ export class ProductService{
         );
     }
 
-    uploadImage(image:File, id): Observable<Image>{
-        let formData = new FormData();
-        formData.append("image", image);
-        formData.append("id", id);
-        return this.http.post(`${this.urlEndPoint}/upload`,formData).pipe(
-            map((response:any) => response.image as Image),
+    deleteImage(imageId:number): Observable<Image>{
+        return this.http.delete<Image>(`${this.urlEndPointImg}/${imageId}`, {headers: this.httpHeaders}).pipe(
             catchError(e => {
                 Swal.fire({
                     icon: 'error',
-                    title: 'Error when uploading the product',
+                    title: 'Error when deleting the product',
                     text: e.error.message
                 })
                 return throwError(e);

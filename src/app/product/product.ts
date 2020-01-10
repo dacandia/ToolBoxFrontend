@@ -1,3 +1,4 @@
+import { Image } from './images/image';
 export class Product{
     productId: number;
     productName: string;
@@ -7,4 +8,5 @@ export class Product{
     productPrice: number;
     productQuantity: number;
     productDate: string;
+    productImage: Image[] = [];
 }

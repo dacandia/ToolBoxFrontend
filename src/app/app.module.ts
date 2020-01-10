@@ -30,6 +30,10 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { LayoutModule } from '@angular/cdk/layout';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import {FileUploadModule} from 'primeng/fileupload';
+import {AccordionModule} from 'primeng/accordion';
+import {CarouselModule} from 'primeng/carousel';
+import {MenuItem} from 'primeng/api';
 
 const routes: Routes = [
   {path: '', redirectTo: '/products', pathMatch: 'full'},
@@ -64,6 +68,9 @@ const routes: Routes = [
     LayoutModule,
     HttpClientModule,
     FormsModule,
+    FileUploadModule,
+    AccordionModule,
+    CarouselModule,
     RouterModule.forRoot(routes)
   ],
   providers: [ProductService],

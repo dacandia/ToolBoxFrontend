@@ -1,39 +1,37 @@
 import { Component, OnInit } from '@angular/core';
 import {Image} from './image';
-import { HttpClient } from '@angular/common/http';
+import {MessageService} from 'primeng/api';
 
 @Component({
     selector: 'image-product',
     templateUrl: './imageproduct.component.html',
-    styleUrls: ['./imageproduct.component.css']
+    styleUrls: ['./imageproduct.component.css'],
+    providers: [MessageService]
 })
 
 export class ImageProductComponent implements OnInit{
-    images: Image[];
-    fileData: File = null;
-    previewUrl:any = null;
-    fileUploadProgress: string = null;
-    uploadedFilePath: string = null;
-    constructor() { }
+    images: any[] = [];
+    uploadedFiles: any[] = [];
+
+    constructor(private messageService: MessageService) { }
     
-    fileProgress(fileInput: any) {
-        this.fileData = <File>fileInput.target.files[0];
-        this.preview();
+    onUpload(event) {
+        for(let file of event.files) {
+            this.uploadedFiles.push(file);
+        }
+
+        this.messageService.add({severity: 'info', summary: 'File Uploaded', detail: ''});
     }
 
-    preview() {
-        // Show preview 
-        var mimeType = this.fileData.type;
-        if (mimeType.match(/image\/*/) == null) {
-          return;
+    onSelect(event){
+        for(let image of event.files){
+            this.images.push(image);
         }
-     
-        var reader = new FileReader();      
-        reader.readAsDataURL(this.fileData); 
-        reader.onload = (_event) => { 
-            this.previewUrl = reader.result; 
-        }
+        console.log(this.images);
+        return this.images;
     }
+
     ngOnInit(){
+        console.log(this.images);
     }
 }
