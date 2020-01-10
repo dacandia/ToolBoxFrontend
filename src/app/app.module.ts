@@ -43,7 +43,7 @@ const routes: Routes = [
   {path: 'products', component: ProductComponent},
   {path: 'productsPage', component: ProductPageComponent},
   {path: 'LandingPage', component: LandingPageComponent},
-  {path: 'categorias', component: CategoriasComponent}
+  {path: 'categorias', component: CategoriasComponent},
   {path: 'products/page/:page', component: ProductComponent},
   {path: 'products/form', component: FormProductComponent},
   {path: 'products/form/:id', component: FormProductComponent},
@@ -58,7 +58,7 @@ const routes: Routes = [
     ProductComponent,
     FormProductComponent,
     PaginatorComponent,
-    ImageProductComponent
+    ImageProductComponent,
     LandingPageComponent,
     CategoriasComponent,
     ProductPageComponent
