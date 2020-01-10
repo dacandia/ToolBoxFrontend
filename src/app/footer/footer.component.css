@@ -2,6 +2,10 @@
     background-color: #f92a19;
 }
 
+.media-icon {
+    color: white;
+}
+
 .footer-links {
     background-color: #343a40;
     color: white;
@@ -30,11 +34,6 @@ a.dropdown-item:hover {
     background-color: black;
 }
 
-.media-icon:hover {
-    text-decoration: none;
-    color: white;
-}
-
 .dropdown-menu {
     background-color: #30353ae5;
 }
@@ -47,4 +46,8 @@ a.dropdown-item:hover {
     color: white;
     background-color: lightdark;
     text-align: center;
+}
+
+.dark-info {
+    background-color: #343a40;
 }
