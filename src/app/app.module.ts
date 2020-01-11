@@ -41,7 +41,7 @@ import {CarouselModule} from 'primeng/carousel';
 import {MenuItem} from 'primeng/api';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/LandingPage', pathMatch: 'full'},
+  {path: '', redirectTo: '/landing_page', pathMatch: 'full'},
   {path: 'products', component: ProductComponent},
   {path: 'productsPage', component: ProductPageComponent},
   {path: 'landing_page', component: LandingPageComponent},
