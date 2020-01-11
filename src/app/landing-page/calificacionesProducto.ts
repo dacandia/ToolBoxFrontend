@@ -1,6 +1,6 @@
 
 export class CalificacionesProducto {
 
-  productrateid:number;
-  productrate:number;
+  productRateId:number;
+  productRate:number;
 }

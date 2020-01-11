@@ -1,4 +1,5 @@
 
+<!--
 <div class="card bg-light mb-3">
   <div class="card-header">Productos</div>
   <div class="card-body">
@@ -16,14 +17,14 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>{{landing.productDescription}}</td>
-      <td>{{landing.productBrand}}</td>
-      <td>{{landing.productPrice}}</td>
-      <td>{{landing.productModel}}</td>
-      <td>{{landing.productName}}</td>
-      <td>{{landing.productQuantity}}</td>
-      <td>{{landing.productDate}}</td>
+    <tr *ngFor="let productr of ProductResponses">
+      <td>{{productr.products.productDescription}}</td>
+      <td>{{productr.products.productBrand}}</td>
+      <td>{{productr.products.productPrice}}</td>
+      <td>{{productr.products.productModel}}</td>
+      <td>{{productr.products.productName}}</td>
+      <td>{{productr.products.productQuantity}}</td>
+      <td>{{productr.products.productDate}}</td>
     </tr>
   </tbody>
 </table>
@@ -31,151 +32,38 @@
   </div>
 </div>
 
+-->
 
 <main class="page landing-page">
     <section id="Acerca_de_Nosotros" class="clean-block about-us">
-      <div class="container" id="Mecanica">
+      <div class="container" id="allproducts">
           <div id="TituloCategoria" class="block-heading">
-              <h2 class="text-info">Mechanics</h2>
-              <p>Nuevos Productos para cualquier caso de mecánica.</p>
+              <h2 class="text-info text-center">All the Products</h2>
+              <p class="text-center">Everything you need in one place!.</p>
           </div>
           <div class="row justify-content-center">
-              <div class="col-sm-6 col-lg-4 text-center">
-                  <div class="card clean-card text-center"><img class="card-img-top w-100 d-block" src="assets/images/bernier.jpg">
+              <div *ngFor="let productr2 of ProductResponses" class="col-sm-12 col-md-4 col-lg-4 text-center">
+                <!--  -->
+                  <div  class="card clean-card text-center"><img class="card-img-top w-100 d-block" src="assets/images/bernier.jpg">
                       <div class="card-body info">
-                          <h4 class="card-title">Bernier</h4>
-                          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                          <div class="text-center Enviar">
-                              <div class="btn-toolbar">
-                                  <div class="btn-group btn-group-sm visible" role="group"><button class="btn btn-primary" type="button" routerLink="/productsPage">RENTAR</button></div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-sm-6 col-lg-4">
-                  <div class="card clean-card text-center"><img class="card-img-top w-100 d-block" src="assets/images/gato.jpg">
-                      <div class="card-body info">
-                          <h4 class="card-title">Gato Hidráulico</h4>
-                          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                          <div class="text-center Enviar">
-                              <div class="btn-toolbar">
-                                  <div class="btn-group btn-group-sm visible" role="group"><button class="btn btn-primary" type="button" routerLink="/productsPage">RENTAR</button></div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-sm-6 col-lg-4">
-                  <div class="card clean-card text-center"><img class="card-img-top w-100 d-block" src="assets/images/scanner_motor.jpg">
-                      <div class="card-body info">
-                          <h4 class="card-title">Scanner Motor</h4>
-                          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                          <div class="text-center Enviar">
-                              <div class="btn-toolbar">
-                                  <div class="btn-group btn-group-sm visible" role="group"><button class="btn btn-primary" type="button" routerLink="/productsPage">RENTAR</button></div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-      <div class="container" id="Carpinteria">
-          <div id="TituloCategoria" class="block-heading">
-              <h2 class="text-info">Carpentry</h2>
-              <p>Nuevos Productos para cualquier caso de mecánica.</p>
-          </div>
-          <div class="row justify-content-center">
-              <div class="col-sm-6 col-lg-4 text-center">
-                  <div class="card clean-card text-center"><img class="card-img-top w-100 d-block" src="assets/images/serrucho.jpg">
-                      <div class="card-body info">
-                          <h4 class="card-title">Serrucho</h4>
-                          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                          <div class="text-center Enviar">
-                              <div class="btn-toolbar">
-                                  <div class="btn-group btn-group-sm visible" role="group"><button class="btn btn-primary" type="button" routerLink="/productsPage">RENTAR</button></div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-sm-6 col-lg-4">
-                  <div class="card clean-card text-center"><img class="card-img-top w-100 d-block" src="assets/images/sierra_circular.jpg">
-                      <div class="card-body info">
-                          <h4 class="card-title">Sierra Circular</h4>
-                          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                          <div class="text-center Enviar">
-                              <div class="btn-toolbar">
-                                  <div class="btn-group btn-group-sm visible" role="group"><button class="btn btn-primary" type="button" routerLink="/productsPage">RENTAR</button></div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-sm-6 col-lg-4">
-                  <div class="card clean-card text-center"><img class="card-img-top w-100 d-block" src="assets/images/martillo.jpg">
-                      <div class="card-body info">
-                          <h4 class="card-title">Martillo-STANLEY</h4>
-                          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                          <div class="text-center Enviar">
-                              <div class="btn-toolbar">
-                                  <div class="btn-group btn-group-sm visible" role="group"><button class="btn btn-primary" type="button" routerLink="/productsPage">RENTAR</button></div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
+                          <h4 class="card-title">{{productr2.products.productName}}</h4>
+                          <h6 class="card-subtitle mb-2 text-muted">{{productr2.products.productBrand}}</h6>
+                          <p class="card-text">{{productr2.products.productDescription}}</p>
+                          <h6 class="card-subtitle mb-2 text-muted">${{productr2.products.productPrice}}</h6>
+                          <button class="btn btn-primary" type="button" routerLink="/productsPage">RENTAR</button>
 
-      <div class="container" id="Electricidad">
-          <div id="TituloCategoria" class="block-heading">
-              <h2 class="text-info">Electricity</h2>
-              <p>Nuevos Productos para cualquier caso de mecánica.</p>
+                      </div>
+                  </div>
+                  <br>
+              </div>
+
           </div>
-          <div class="row justify-content-center">
-              <div class="col-sm-6 col-lg-4 text-center">
-                  <div class="card clean-card text-center"><img class="card-img-top w-100 d-block" src="assets/images/pinzas.JPG">
-                      <div class="card-body info">
-                          <h4 class="card-title">Pinzas</h4>
-                          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                          <div class="text-center Enviar">
-                              <div class="btn-toolbar">
-                                  <div class="btn-group btn-group-sm visible" role="group"><button class="btn btn-primary" type="button" routerLink="/productsPage">RENTAR</button></div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-sm-6 col-lg-4">
-                  <div class="card clean-card text-center"><img class="card-img-top w-100 d-block" src="assets/images/bernier.jpg">
-                      <div class="card-body info">
-                          <h4 class="card-title">Bernier</h4>
-                          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                          <div class="text-center Enviar">
-                              <div class="btn-toolbar">
-                                  <div class="btn-group btn-group-sm visible" role="group"><button class="btn btn-primary" type="button" routerLink="/productsPage">RENTAR</button></div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-sm-6 col-lg-4">
-                  <div class="card clean-card text-center"><img class="card-img-top w-100 d-block" src="assets/images/multimetro.jpg">
-                      <div class="card-body info">
-                          <h4 class="card-title">Multimetro</h4>
-                          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                          <div class="text-center Enviar">
-                              <div class="btn-toolbar">
-                                  <div class="btn-group btn-group-sm visible" role="group"><button class="btn btn-primary" type="button" routerLink="/productsPage">RENTAR</button></div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
+<br>
+<br>
       </div>
 
     </section>
 </main>
+
+<br>
+<br>
