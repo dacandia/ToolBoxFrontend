@@ -1,3 +1,4 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -12,6 +13,7 @@ import { ProductComponent } from './product/product.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { ProductPageComponent } from './product-page/product-page.component';
 import { CategoriasComponent} from './categorias/categorias.component';
+import {HttpClientModule} from '@angular/common/http';
 /**
  * Material Modules
  */
@@ -24,6 +26,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { LayoutModule } from '@angular/cdk/layout';
+import {LandingService} from './landing-page/landing.service'
 
 const routes: Routes = [
   {path: '', redirectTo: '/LandingPage', pathMatch: 'full'},
@@ -45,6 +48,7 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatIconModule,
@@ -57,7 +61,7 @@ const routes: Routes = [
     LayoutModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [LandingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
