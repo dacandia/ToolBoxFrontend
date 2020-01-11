@@ -1,14 +1,14 @@
 <mat-sidenav-container class="sidenav-container">
     <mat-sidenav #drawer class="sidenav" #sidenav (keydown.escape)="close('escape')">
-        <mat-toolbar class="navbar-dark bg-dark text-white">
+        <mat-toolbar class="main-nav text-white">
             <span><mat-icon>person</mat-icon> Hello {{ user }}</span>
 
         </mat-toolbar>
         <mat-nav-list>
-          <a mat-list-item class="text-muted" href="#">RENT BY CATEGORY</a>
-          <a mat-list-item routerLink="/categorias">Mechanics<span class="spacer"></span><mat-icon>keyboard_arrow_right</mat-icon></a>
-          <a mat-list-item routerLink="/categorias">Carpentry<span class="spacer"></span><mat-icon>keyboard_arrow_right</mat-icon></a>
-          <a mat-list-item routerLink="/categorias">Electricity<span class="spacer"></span><mat-icon>keyboard_arrow_right</mat-icon></a>
+            <a mat-list-item class="text-muted" href="#">RENT BY CATEGORY</a>
+            <a mat-list-item routerLink="/categorias">Mechanics<span class="spacer"></span><mat-icon>keyboard_arrow_right</mat-icon></a>
+            <a mat-list-item routerLink="/categorias">Carpentry<span class="spacer"></span><mat-icon>keyboard_arrow_right</mat-icon></a>
+            <a mat-list-item routerLink="/categorias">Electricity<span class="spacer"></span><mat-icon>keyboard_arrow_right</mat-icon></a>
         </mat-nav-list>
         <hr>
         <mat-nav-list>
@@ -23,24 +23,24 @@
     </mat-sidenav>
 
     <mat-sidenav-content>
-        <mat-toolbar class="navbar-dark bg-dark">
+        <mat-toolbar class="main-nav">
             <button class="text-white" type="button" aria-label="Toggle sidenav" mat-icon-button (click)="sidenav.open()">
               <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
             </button>
-            <a class="navbar-brand" routerLink="/LandingPage">
+            <a class="navbar-brand" routerLink="/landing_page">
                 <img src="assets/images/logo3.png" width="80" height="80" alt="">
             </a>
             <span class="spacer"></span>
             <mat-nav-list>
-                <a class="nav-link navbar-text" routerLink="/LandingPage">Home</a>
-                <a class="nav-link navbar-text dropdown-toggle mt-3 mb-4"  id="dropdownMenuButton" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
+                <a class="nav-link navbar-text" routerLink="/landing_page">Home</a>
+                <a class="nav-link navbar-text dropdown-toggle mt-3 mb-4" id="dropdownMenuButton" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
 
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item" routerLink="/categorias"><i class='fas fa-angle-right'></i> Mechanics</a>
                     <br>
                     <a class="dropdown-item" routerLink="/categorias"><i class='fas fa-angle-right'></i> Carpentry</a>
                     <br>
-                    <a class="dropdown-item" routerLink="/categorias"><i class='fas fa-angle-right'></i> Electricity</a>
+                    <a class="dropdown-item" routerLink="/categoris"><i class='fas fa-angle-right'></i> Electricity</a>
                 </div>
 
                 <a class="nav-link navbar-text" href="#">About us</a>

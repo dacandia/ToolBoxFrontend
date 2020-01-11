@@ -13,7 +13,14 @@ import { ProductComponent } from './product/product.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { ProductPageComponent } from './product-page/product-page.component';
 import { CategoriasComponent} from './categorias/categorias.component';
-import {HttpClientModule} from '@angular/common/http';
+import { FormProductComponent } from './product/formproduct.component';
+import { PaginatorComponent } from './paginator/paginator.component';
+import {ImageProductComponent} from './product/images/imageproduct.component';
+/**
+ * Services
+ */
+import { ProductService } from './product/product.service';
+import {LandingService}from './landing-page/landing.service'
 /**
  * Material Modules
  */
@@ -26,14 +33,23 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { LayoutModule } from '@angular/cdk/layout';
-import {LandingService} from './landing-page/landing.service'
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import {FileUploadModule} from 'primeng/fileupload';
+import {AccordionModule} from 'primeng/accordion';
+import {CarouselModule} from 'primeng/carousel';
+import {MenuItem} from 'primeng/api';
 
 const routes: Routes = [
   {path: '', redirectTo: '/LandingPage', pathMatch: 'full'},
   {path: 'products', component: ProductComponent},
   {path: 'productsPage', component: ProductPageComponent},
-  {path: 'LandingPage', component: LandingPageComponent},
-  {path: 'categorias', component: CategoriasComponent}
+  {path: 'landing_page', component: LandingPageComponent},
+  {path: 'categorias', component: CategoriasComponent},
+  {path: 'products/page/:page', component: ProductComponent},
+  {path: 'products/form', component: FormProductComponent},
+  {path: 'products/form/:id', component: FormProductComponent},
+  {path: 'products/upload/:id', component: ImageProductComponent}
 ]
 
 @NgModule({
@@ -42,6 +58,9 @@ const routes: Routes = [
     SidenavComponent,
     FooterComponent,
     ProductComponent,
+    FormProductComponent,
+    PaginatorComponent,
+    ImageProductComponent,
     LandingPageComponent,
     CategoriasComponent,
     ProductPageComponent
@@ -59,9 +78,14 @@ const routes: Routes = [
     MatListModule,
     MatCheckboxModule,
     LayoutModule,
+    HttpClientModule,
+    FormsModule,
+    FileUploadModule,
+    AccordionModule,
+    CarouselModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [LandingService],
+  providers: [ProductService,LandingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
