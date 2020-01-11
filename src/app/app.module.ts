@@ -24,6 +24,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { LayoutModule } from '@angular/cdk/layout';
+import { ClientProfileComponent } from './client-profile/client-profile.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/LandingPage', pathMatch: 'full'},
@@ -41,7 +42,8 @@ const routes: Routes = [
     ProductComponent,
     LandingPageComponent,
     CategoriasComponent,
-    ProductPageComponent
+    ProductPageComponent,
+    ClientProfileComponent
   ],
   imports: [
     BrowserModule,
