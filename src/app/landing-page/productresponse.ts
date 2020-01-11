@@ -6,7 +6,7 @@ import{ImagenesProducto} from './imagenesProducto';
 
 export class ProductResponse{
   productos:Landingpage;
-  calificacionesProducto:CalificacionesProducto[];
-  comentariosProducto:ComentariosProducto[];
-  imagenesProducto:ImagenesProducto[];
+  productRate:CalificacionesProducto[];
+  productComment:ComentariosProducto[];
+  productImage:ImagenesProducto[];
 }

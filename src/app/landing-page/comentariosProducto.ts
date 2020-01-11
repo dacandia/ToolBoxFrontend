@@ -1,5 +1,5 @@
 export class ComentariosProducto {
-  productcommentid:number;
-  productcomment:string;
-  productcommentdate:string;
+  productCommentId:number;
+  productComment:string;
+  productCommentDate:string;
 }
