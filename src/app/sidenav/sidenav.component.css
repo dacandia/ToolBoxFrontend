@@ -1,13 +1,27 @@
+.container-fluid {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.row {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+.main-nav {
+    background-color: #f92a19;
+}
+
+.fa-angle-right {
+    color: #FF6600;
+}
+
 .sidenav-container {
     height: 100%;
 }
 
 .sidenav {
     width: auto;
-}
-
-.sidenav .mat-toolbar {
-    background: inherit;
 }
 
 .mat-toolbar {
@@ -28,5 +42,9 @@
 }
 
 .navbar-text {
-    color: #ff8700;
+    color: #f7f4f4;
+}
+
+.header {
+    background-color: #062835;
 }
