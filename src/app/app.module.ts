@@ -1,3 +1,4 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -19,6 +20,7 @@ import {ImageProductComponent} from './product/images/imageproduct.component';
  * Services
  */
 import { ProductService } from './product/product.service';
+import {LandingService}from './landing-page/landing.service'
 /**
  * Material Modules
  */
@@ -41,7 +43,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/LandingPage', pathMatch: 'full'},
+  {path: '', redirectTo: '/landing_page', pathMatch: 'full'},
   {path: 'products', component: ProductComponent},
   {path: 'productsPage', component: ProductPageComponent},
   {path: 'landing_page', component: LandingPageComponent},
@@ -67,6 +69,7 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatIconModule,
@@ -88,7 +91,7 @@ const routes: Routes = [
     MatFormFieldModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [ProductService],
+  providers: [ProductService,LandingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
