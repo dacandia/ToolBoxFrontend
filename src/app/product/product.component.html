@@ -1,11 +1,27 @@
 <div class="card bg-light mb-3">
     <div class="card-header">Your Products</div>
     <div class="card-body">
-        <h5 class="card-title">List of Products</h5>
 
-        <div class="my-2 text-left">
-            <button class="btn btn-rounded btn-success" type="button" [routerLink]="['/products/form']">Add Product</button>
+        <div class="row">
+            <div class="col-sm-6 col-md-6 my-2 text-left">
+                <button class="btn btn-rounded btn-success" type="button" [routerLink]="['/products/form']">Add Product</button>
+            </div>
+
+            <div class="col-sm-6 col-md-6 text-md-right">
+                <form>
+                    <mat-form-field class="example-full-width">
+                        <input type="text" placeholder="Search Product" aria-label="Number" matInput [formControl]="autocompleteControl" [matAutocomplete]="auto">
+                        <mat-autocomplete #auto="matAutocomplete" [displayWith]="showProductName" (optionSelected)="selectProduct($event)">
+                            <mat-option *ngFor="let productOption of filteredProducts | async" [value]="productOption">
+                                {{productOption.productName}}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field>
+                </form>
+            </div>
         </div>
+
+
         <div *ngIf="products?.length==0" class="alert-info">
             There are no records in the database.
         </div>

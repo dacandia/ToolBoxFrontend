@@ -32,11 +32,13 @@ import { MatListModule } from '@angular/material/list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { LayoutModule } from '@angular/cdk/layout';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {FileUploadModule} from 'primeng/fileupload';
 import {AccordionModule} from 'primeng/accordion';
 import {CarouselModule} from 'primeng/carousel';
-import {MenuItem} from 'primeng/api';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 const routes: Routes = [
   {path: '', redirectTo: '/LandingPage', pathMatch: 'full'},
@@ -80,6 +82,10 @@ const routes: Routes = [
     FileUploadModule,
     AccordionModule,
     CarouselModule,
+    ReactiveFormsModule,
+    MatAutocompleteModule,
+    MatInputModule,
+    MatFormFieldModule,
     RouterModule.forRoot(routes)
   ],
   providers: [ProductService],

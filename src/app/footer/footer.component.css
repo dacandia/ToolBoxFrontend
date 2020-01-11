@@ -1,3 +1,13 @@
+.container-fluid {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.row {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
 #social-media {
     background-color: #f92a19;
 }
@@ -22,20 +32,6 @@
 
 a:link {
     text-decoration: none;
-}
-
-.dropdown-item {
-    color: white;
-}
-
-a.dropdown-item:hover {
-    text-decoration: none;
-    color: lightgray;
-    background-color: black;
-}
-
-.dropdown-menu {
-    background-color: #30353ae5;
 }
 
 .social-media-list {
