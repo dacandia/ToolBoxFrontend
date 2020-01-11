@@ -104,4 +104,8 @@ export class ProductService{
             })
         );
     }
+
+    filteredProducts(term:string): Observable<Product[]>{
+        return this.http.get<Product[]>(`${this.urlEndPoint}/filter-products/${term}`);
+    }
 }

@@ -2,7 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from './product';
 import { ProductService } from './product.service';
 import Swal from 'sweetalert2';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FormControl } from '@angular/forms';
+import { startWith, map, flatMap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 
 @Component({
     selector: 'app-product',
@@ -22,8 +26,12 @@ export class ProductComponent implements OnInit {
     products: Product[];
     paginator: any;
 
+    autocompleteControl = new FormControl();
+    findProducts:string[] = ['One', 'Two', 'Three'];
+    filteredProducts: Observable<Product[]>;
+
     constructor(private productService: ProductService, 
-        private activatedRoute: ActivatedRoute) { }
+        private activatedRoute: ActivatedRoute, private router: Router) { }
 
     ngOnInit() {
         this.activatedRoute.paramMap.subscribe(
@@ -39,7 +47,13 @@ export class ProductComponent implements OnInit {
               }
             );
           }
-        )
+        );
+
+        this.filteredProducts = this.autocompleteControl.valueChanges
+            .pipe(
+                map( value => typeof value === 'string' ? value : value.productName),
+                flatMap( value => value ? this._filter(value) : [])
+            );
     }
 
     delete(product: Product): void{
@@ -73,5 +87,23 @@ export class ProductComponent implements OnInit {
               )
             }
         }) 
+    }
+
+    private _filter(value: string): Observable<Product[]>{
+        const filterValue = value.toLowerCase();
+        return this.productService.filteredProducts(filterValue);
+    }
+
+    showProductName(product ? : Product): string | undefined{
+      return product ? product.productName : undefined;
+    }
+
+    selectProduct(event: MatAutocompleteSelectedEvent):void{
+      let product = event.option.value as Product;
+      console.log(product);
+      this.autocompleteControl.setValue('');
+      event.option.focus();
+      event.option.deselect();
+      this.router.navigate(['/products/form/'+product.productId]);
     }
 }
