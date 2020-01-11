@@ -64,8 +64,10 @@ export class ProductService{
 
     updateProduct(product: Product, images: File[]): Observable<Product>{
         let formData = new FormData();
-        for(let image of images){
-            formData.append('images', image);
+        if(typeof images != 'undefined'){
+            for(let image of images){
+                formData.append('images', image);
+            } 
         }
         formData.append("product",JSON.stringify(product));
         return this.http.put(`${this.urlEndPoint}`, formData).pipe(

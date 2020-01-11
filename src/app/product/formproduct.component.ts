@@ -58,7 +58,6 @@ export class FormProductComponent implements OnInit{
     }
 
     updateProduct(): void {
-        console.log("update product");
         this.productService.updateProduct(this.product, this.files).subscribe( 
             product => {
                 this.router.navigate(['/products'])
@@ -86,6 +85,7 @@ export class FormProductComponent implements OnInit{
                 }
                 reader.readAsDataURL(file);
             }
+            console.log(this.urls);
         };
     }
 
