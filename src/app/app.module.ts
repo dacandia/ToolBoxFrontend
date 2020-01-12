@@ -33,6 +33,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { LayoutModule } from '@angular/cdk/layout';
+
+import { ClientProfileComponent } from './client-profile/client-profile.component';
+
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {FileUploadModule} from 'primeng/fileupload';
@@ -41,6 +44,7 @@ import {CarouselModule} from 'primeng/carousel';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+
 
 const routes: Routes = [
   {path: '', redirectTo: '/landing_page', pathMatch: 'full'},
@@ -66,7 +70,8 @@ const routes: Routes = [
     ImageProductComponent,
     LandingPageComponent,
     CategoriasComponent,
-    ProductPageComponent
+    ProductPageComponent,
+    ClientProfileComponent
   ],
   imports: [
     BrowserModule,

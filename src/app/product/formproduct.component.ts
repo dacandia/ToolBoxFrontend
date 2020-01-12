@@ -58,7 +58,8 @@ export class FormProductComponent implements OnInit{
     }
 
     updateProduct(): void {
-        this.productService.updateProduct(this.product).subscribe( 
+        console.log("update product");
+        this.productService.updateProduct(this.product, this.files).subscribe( 
             product => {
                 this.router.navigate(['/products'])
                 swal.fire({
@@ -76,7 +77,6 @@ export class FormProductComponent implements OnInit{
     }
 
     detectFiles(event) {
-        this.urls = [];
         this.files = event.target.files;
         if (this.files) {
             for (let file of this.files) {

@@ -62,8 +62,13 @@ export class ProductService{
         );
     }
 
-    updateProduct(product: Product): Observable<Product>{
-        return this.http.put(`${this.urlEndPoint}/${product.productId}`, product, {headers: this.httpHeaders}).pipe(
+    updateProduct(product: Product, images: File[]): Observable<Product>{
+        let formData = new FormData();
+        for(let image of images){
+            formData.append('images', image);
+        }
+        formData.append("product",JSON.stringify(product));
+        return this.http.put(`${this.urlEndPoint}`, formData).pipe(
             map( (response: any) => response.product as Product),
             catchError(e => {
                 if(e.status == 400){
