@@ -1,39 +1,4 @@
 
-<!--
-<div class="card bg-light mb-3">
-  <div class="card-header">Productos</div>
-  <div class="card-body">
-    <h5 class="card-title">Listado de Productos</h5>
-<table class="table table-bordered table-striped">
-  <thead>
-    <tr>
-      <th>description</th>
-      <th>brand</th>
-      <th>price</th>
-      <th>model</th>
-      <th>name</th>
-      <th>quantity</th>
-      <th>date</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let productr of ProductResponses">
-      <td>{{productr.products.productDescription}}</td>
-      <td>{{productr.products.productBrand}}</td>
-      <td>{{productr.products.productPrice}}</td>
-      <td>{{productr.products.productModel}}</td>
-      <td>{{productr.products.productName}}</td>
-      <td>{{productr.products.productQuantity}}</td>
-      <td>{{productr.products.productDate}}</td>
-    </tr>
-  </tbody>
-</table>
-
-  </div>
-</div>
-
--->
-
 <main class="page landing-page">
     <section id="Acerca_de_Nosotros" class="clean-block about-us">
       <div class="container" id="allproducts">
@@ -50,13 +15,12 @@
                           <h6 class="card-subtitle mb-2 text-muted">{{productr2.products.productBrand}}</h6>
                           <p class="card-text">{{productr2.products.productDescription}}</p>
                           <h6 class="card-subtitle mb-2 text-muted">${{productr2.products.productPrice}}</h6>
-                          <button class="btn btn-primary" type="button" routerLink="/productsPage">RENTAR</button>
+                          <button class="btn btn-primary" type="button" [routerLink]="['/productsPage',productr2.products.productId]">RENTAR</button>
 
                       </div>
                   </div>
                   <br>
               </div>
-
           </div>
 <br>
 <br>

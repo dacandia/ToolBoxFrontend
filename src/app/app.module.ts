@@ -46,6 +46,7 @@ const routes: Routes = [
   {path: '', redirectTo: '/landing_page', pathMatch: 'full'},
   {path: 'products', component: ProductComponent},
   {path: 'productsPage', component: ProductPageComponent},
+  {path: 'productsPage/:id', component: ProductPageComponent},
   {path: 'landing_page', component: LandingPageComponent},
   {path: 'categorias', component: CategoriasComponent},
   {path: 'products/page/:page', component: ProductComponent},
