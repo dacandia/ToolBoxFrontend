@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 /**
@@ -24,13 +25,18 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { LayoutModule } from '@angular/cdk/layout';
+import { UserLoginComponent } from './user-login/user-login.component';
+import { UserRegisterComponent } from './user-register/user-register.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   {path: '', redirectTo: '/LandingPage', pathMatch: 'full'},
   {path: 'products', component: ProductComponent},
   {path: 'productsPage', component: ProductPageComponent},
   {path: 'LandingPage', component: LandingPageComponent},
-  {path: 'categorias', component: CategoriasComponent}
+  {path: 'categorias', component: CategoriasComponent},
+  {path: 'userLogin',component:UserLoginComponent},
+  {path: 'userRegister',component:UserRegisterComponent}
 ]
 
 @NgModule({
@@ -41,11 +47,14 @@ const routes: Routes = [
     ProductComponent,
     LandingPageComponent,
     CategoriasComponent,
-    ProductPageComponent
+    ProductPageComponent,
+    UserLoginComponent,
+    UserRegisterComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MatButtonModule,
     MatIconModule,
     MatToolbarModule,
@@ -55,7 +64,8 @@ const routes: Routes = [
     MatListModule,
     MatCheckboxModule,
     LayoutModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    FormsModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
