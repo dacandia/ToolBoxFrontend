@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {Landingpage} from './landingpage';
 import {LandingService} from './landing.service';
-import {CalificacionesProducto} from './calificacionesProducto';
-import {ComentariosProducto} from './comentariosProducto';
-import {ImagenesProducto} from './imagenesProducto';
 import {ProductResponse} from './productresponse';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ProductService } from '../product/product.service';
+import { Product } from '../product/product';
 
 @Component({
   selector: 'app-landing-page',
@@ -14,15 +13,30 @@ import {ProductResponse} from './productresponse';
 export class LandingPageComponent implements OnInit {
 
   //se crea un arreglo para guardar los datos de acuerdo al POJO creado (nota.mandar a llamar deacuerdo a lo que quiera recibir)
-  landing: Landingpage[];//Se obtienen los getters y setters para traerse productos   //cuando queres todo los arreglos se pone los corchetes
-  calificaciones:CalificacionesProducto[];////Se obtienen los getters y setters para traerse calificaciones productos
-  comentarios: ComentariosProducto[];////Se obtienen los getters y setters para traerse comentarios productos
-  imagenes:ImagenesProducto[];////Se obtienen los getters y setters para traerse imagenes productos
   ProductResponses:ProductResponse[];
   //se injecta la dependencia landing service
-  constructor(private productos: LandingService) { }
+  paginator:any;
+  products: Product[];
+
+  constructor(private productService: ProductService,private productos: LandingService,private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
+
+    this.activatedRoute.paramMap.subscribe(
+      params =>{
+        let page:number = +params.get('page');
+        if(!page){
+          page = 0;
+        }
+        this.productService.getProducts(page).subscribe(
+          response => {
+            this.products = response.content as Product[];
+            this.paginator = response;
+          }
+        );
+      }
+    );
+
     //se le assigna la dependencia de landingservice, el metodo "get productos" a nuestra dependencia
     this.productos.getProductos().subscribe(
       //se crea una funcion anonima para suscribirse a al observable

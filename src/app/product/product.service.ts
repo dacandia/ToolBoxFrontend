@@ -29,6 +29,8 @@ export class ProductService{
         );
     }
 
+    
+
     getProduct(id:number): Observable<Product>{
         return this.http.get<Product>(`${this.urlEndPoint}/${id}`).pipe(
             catchError(e => {

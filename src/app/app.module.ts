@@ -20,8 +20,9 @@ import {ImageProductComponent} from './product/images/imageproduct.component';
  * Services
  */
 import { ProductService } from './product/product.service';
-import {LandingService}from './landing-page/landing.service'
-/**
+import {LandingService}from './landing-page/landing.service';
+import { CategoriesService } from './categorias/categorias.service';
+/*
  * Material Modules
  */
 import { MatButtonModule } from '@angular/material/button';
@@ -33,6 +34,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { LayoutModule } from '@angular/cdk/layout';
+
+import { ClientProfileComponent } from './client-profile/client-profile.component';
+
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {FileUploadModule} from 'primeng/fileupload';
@@ -42,13 +46,16 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 
+
 const routes: Routes = [
   {path: '', redirectTo: '/landing_page', pathMatch: 'full'},
   {path: 'products', component: ProductComponent},
   {path: 'productsPage', component: ProductPageComponent},
+  {path: 'productsPage/:id', component: ProductPageComponent},
   {path: 'landing_page', component: LandingPageComponent},
   {path: 'categorias', component: CategoriasComponent},
   {path: 'products/page/:page', component: ProductComponent},
+  {path: 'landing/page/:page', component: LandingPageComponent},
   {path: 'products/form', component: FormProductComponent},
   {path: 'products/form/:id', component: FormProductComponent},
   {path: 'products/upload/:id', component: ImageProductComponent}
@@ -65,7 +72,8 @@ const routes: Routes = [
     ImageProductComponent,
     LandingPageComponent,
     CategoriasComponent,
-    ProductPageComponent
+    ProductPageComponent,
+    ClientProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -91,7 +99,7 @@ const routes: Routes = [
     MatFormFieldModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [ProductService,LandingService],
+  providers: [ProductService,LandingService, CategoriesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

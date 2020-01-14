@@ -4,3 +4,7 @@
   filter: invert(1);
   font-size: 200px;
 }
+img {
+  height: 50vh;
+  weight: 30vh;
+}
