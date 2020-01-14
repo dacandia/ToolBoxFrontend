@@ -16,9 +16,12 @@ export class LandingPageComponent implements OnInit {
   ProductResponses:ProductResponse[];
   //se injecta la dependencia landing service
   paginator:any;
+  url: string;
   products: Product[];
 
-  constructor(private productService: ProductService,private productos: LandingService,private activatedRoute: ActivatedRoute, private router: Router) { }
+  constructor(private productService: ProductService,private productos: LandingService,private activatedRoute: ActivatedRoute, private router: Router) { 
+    this.url="/landing_page/page";
+  }
 
   ngOnInit() {
 
