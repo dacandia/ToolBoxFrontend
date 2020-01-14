@@ -48,14 +48,14 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 
 
 const routes: Routes = [
-  {path: '', redirectTo: '/landing_page', pathMatch: 'full'},
+  {path: '', redirectTo: '/landing_page/page', pathMatch: 'full'},
   {path: 'products', component: ProductComponent},
   {path: 'productsPage', component: ProductPageComponent},
   {path: 'productsPage/:id', component: ProductPageComponent},
   {path: 'landing_page', component: LandingPageComponent},
   {path: 'categorias', component: CategoriasComponent},
   {path: 'products/page/:page', component: ProductComponent},
-  {path: 'landing/page/:page', component: LandingPageComponent},
+  {path: 'landing_page/page/:page', component: LandingPageComponent},
   {path: 'products/form', component: FormProductComponent},
   {path: 'products/form/:id', component: FormProductComponent},
   {path: 'products/upload/:id', component: ImageProductComponent}

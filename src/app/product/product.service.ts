@@ -32,6 +32,7 @@ export class ProductService{
     
 
     getProduct(id:number): Observable<Product>{
+        console.log("Traigo el producto con el id"+id);
         return this.http.get<Product>(`${this.urlEndPoint}/${id}`).pipe(
             catchError(e => {
                 this.router.navigate(['/products']);

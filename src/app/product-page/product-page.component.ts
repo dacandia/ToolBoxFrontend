@@ -3,6 +3,8 @@ import {Landingpage} from '../landing-page/landingpage';
 import {ProductResponse} from '../landing-page/productresponse';
 import {LandingService} from '../landing-page/landing.service';
 import {Router,ActivatedRoute} from '@angular/router'
+import { ProductService } from '../product/product.service';
+import { Product } from '../product/product';
 
 @Component({
   selector: 'app-product-page',
@@ -12,7 +14,12 @@ import {Router,ActivatedRoute} from '@angular/router'
 export class ProductPageComponent implements OnInit {
 
   private producto: ProductResponse;
-  constructor(private productoService: LandingService, private router:Router,private activatedRoute:ActivatedRoute ) { }
+  protected product: Product = new Product();
+  constructor(
+      private productoService: LandingService, 
+      private router:Router,
+      private activatedRoute:ActivatedRoute,
+      private productService: ProductService ) { }
 
   ngOnInit() {
     this.cargarCliente();
@@ -22,8 +29,7 @@ export class ProductPageComponent implements OnInit {
     this.activatedRoute.params.subscribe(params =>{
       let id = params['id']
       if(id){
-        this.productoService.getOnliOneProduct(id).subscribe(
-          (productresponse)=>this.producto=productresponse
+        this.productService.getProduct(id).subscribe( (product) => this.product = product
         )
       }
     })

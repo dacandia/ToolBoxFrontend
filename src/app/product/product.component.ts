@@ -94,6 +94,7 @@ export class ProductComponent implements OnInit {
         }) 
     }
 
+    //To make the search beetwen components
     private _filter(value: string): Observable<Product[]>{
         const filterValue = value.toLowerCase();
         return this.productService.filteredProducts(filterValue);
