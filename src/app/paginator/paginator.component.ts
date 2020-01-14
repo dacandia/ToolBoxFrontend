@@ -4,19 +4,21 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/cor
     selector: 'paginator-nav',
     templateUrl: './paginator.component.html'
 })
+
 export class PaginatorComponent implements OnInit, OnChanges{
     
     @Input() paginator: any;
+    @Input() url: string;
     pages: number[];
     initialPage: number;
     finalPage: number;
+
 
     constructor(){}
 
     ngOnInit(){
         this.initPaginator();
     }
-
     ngOnChanges(changes: SimpleChanges){
         let paginatorUpdated = changes['paginator'];
         if(paginatorUpdated.previousValue){
