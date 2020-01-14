@@ -20,8 +20,9 @@ import {ImageProductComponent} from './product/images/imageproduct.component';
  * Services
  */
 import { ProductService } from './product/product.service';
-import {LandingService}from './landing-page/landing.service'
-/**
+import {LandingService}from './landing-page/landing.service';
+import { CategoriesService } from './categorias/categorias.service';
+/*
  * Material Modules
  */
 import { MatButtonModule } from '@angular/material/button';
@@ -54,6 +55,7 @@ const routes: Routes = [
   {path: 'landing_page', component: LandingPageComponent},
   {path: 'categorias', component: CategoriasComponent},
   {path: 'products/page/:page', component: ProductComponent},
+  {path: 'landing/page/:page', component: LandingPageComponent},
   {path: 'products/form', component: FormProductComponent},
   {path: 'products/form/:id', component: FormProductComponent},
   {path: 'products/upload/:id', component: ImageProductComponent}
@@ -97,7 +99,7 @@ const routes: Routes = [
     MatFormFieldModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [ProductService,LandingService],
+  providers: [ProductService,LandingService, CategoriesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
