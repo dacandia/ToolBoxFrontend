@@ -1,3 +1,4 @@
+
 <main class="page product-page">
        <section class="clean-block clean-product dark">
            <div class="container">
@@ -16,13 +17,13 @@
                                      </ol>
                                     <div class="carousel-inner">
                                      <div class="carousel-item active">
-                                       <img class="d-block w-100" src="assets/images/gato.jpg" alt="First slide">
+                                       <img class="d-block w-100" src="{{producto.products.productImage[0].imageRoute}}" alt="First slide">
                                      </div>
                                      <div class="carousel-item">
-                                       <img class="d-block w-100" src="assets/images/flexometro.jpg" alt="Second slide">
+                                       <img class="d-block w-100" src="{{producto.products.productImage[0].imageRoute}}" alt="Second slide">
                                      </div>
                                      <div class="carousel-item">
-                                       <img class="d-block w-100" src="assets/images/bernier.jpg" alt="Third slide">
+                                       <img class="d-block w-100" src="{{producto.products.productImage[0].imageRoute}}" alt="Third slide">
                                      </div>
                                     </div>
                                     <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -33,18 +34,22 @@
                                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                      <span class="sr-only">Next</span>
                                     </a>
+
+
+
                                     </div>
                            </div>
                            <div class="col-md-6">
                                <div class="info">
-                                   <h3>Gato Hidráulico</h3>
+                                   <h3>{{producto.products.productName}}</h3>
                                    <div class="rating">Product Rate: </div>
                                    <div class="price">
                                        <h3>$300.00</h3>
                                    </div><button class="btn btn-primary" type="button"><i class="icon-basket"></i>Add to Cart</button>
                                    <div class="summary">
-                                       <p><br><br><strong>Gato hidráulico</strong>. El <strong>gato</strong> es una máquina empleada para la elevación de cargas que puede ser mecánica o <strong>hidráulica</strong>. Los <strong>gatos</strong> mecánicos,
-                                           de cremallera (o husillo) son adecuados para la elevación de pesos pequeños, mientras que los <strong>gatos hidráulicos</strong> se emplean para la elevación de grandes pesos.<br><br><br><br></p>
+                                       <p>
+                                         {{producto.products.productDescription}}
+                                       </p>
                                    </div>
                                </div>
                            </div>
@@ -54,63 +59,88 @@
                        <div>
                            <ul class="nav nav-tabs" id="myTab">
                                <li class="nav-item"><a class="nav-link active" role="tab" data-toggle="tab" id="description-tab" href="#description">About the Lender</a></li>
-                               <li class="nav-item"><a class="nav-link" role="tab" data-toggle="tab" id="specifications-tabs" href="#specifications">Product Description</a></li>
+                               <li class="nav-item"><a class="nav-link active" role="tab" data-toggle="tab" id="specifications-tabs" href="#specifications">Product Description</a></li>
                                <li class="nav-item"><a class="nav-link" role="tab" data-toggle="tab" id="reviews-tab" href="#reviews">Comments</a></li>
                            </ul>
                            <div class="tab-content" id="myTabContent">
                                <div class="tab-pane active fade show description" role="tabpanel" id="description">
-                                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing
-                                       elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                 <br>
+                                 <br>
+                                 <table class="table table-bordered table-striped">
+                                   <thead>
+                                     <tr>
+                                       <th>Product Name</th>
+                                       <th>Product Model</th>
+                                       <th>Product Brand</th>
+                                       <th>Product Price</th>
+                                       <th>Product Quantity</th>
+                                       <th>Product Date of Publish</th>
+                                     </tr>
+                                   </thead>
+                                   <tbody>
+                                     <!-- Se crea un ciclo for que va a recorrer todo el arreglo de las variables
+                                         creadas en el archivo clinte.ts que pertenece al componente clientes.component.ts-->
+                                     <tr>
+                                       <td>{{producto.products.productName}}</td>
+                                       <td>{{producto.products.productModel}}</td>
+                                       <td>{{producto.products.productBrand}}</td>
+                                       <td>{{producto.products.productPrice}}</td>
+                                       <td>{{producto.products.productQuantity}}</td>
+                                       <td>{{producto.products.productDate}}</td>
+                                   </tbody>
+
+                                 </table>
+
                                        </div>
                                        <br>
                                        <br>
                                <div class="tab-pane fade show specifications" role="tabpanel" id="specifications">
                                    <div class="table-responsive table-bordered">
-                                       <table class="table table-bordered">
-                                           <tbody>
-                                               <tr>
-                                                   <td class="stat">Display</td>
-                                                   <td>5.2"</td>
-                                               </tr>
-                                               <tr>
-                                                   <td class="stat">Camera</td>
-                                                   <td>12MP</td>
-                                               </tr>
-                                               <tr>
-                                                   <td class="stat">RAM</td>
-                                                   <td>4GB</td>
-                                               </tr>
-                                               <tr>
-                                                   <td class="stat">OS</td>
-                                                   <td>iOS</td>
-                                               </tr>
-                                           </tbody>
-                                       </table>
+                                     <table class="table table-bordered table-striped">
+                                       <thead>
+                                         <tr>
+                                           <th>Product Name</th>
+                                           <th>Product Model</th>
+                                           <th>Product Brand</th>
+                                           <th>Product Price</th>
+                                           <th>Product Quantity</th>
+                                           <th>Product Date of Publish</th>
+                                         </tr>
+                                       </thead>
+                                       <tbody>
+                                         <!-- Se crea un ciclo for que va a recorrer todo el arreglo de las variables
+                                             creadas en el archivo clinte.ts que pertenece al componente clientes.component.ts-->
+                                         <tr>
+                                           <td>{{producto.products.productName}}</td>
+                                           <td>{{producto.products.productModel}}</td>
+                                           <td>{{producto.products.productBrand}}</td>
+                                           <td>{{producto.products.productPrice}}</td>
+                                           <td>{{producto.products.productQuantity}}</td>
+                                           <td>{{producto.products.productDate}}</td>
+                                       </tbody>
+
+                                     </table>
                                    </div>
                                </div>
                                <br>
                                <br>
                                <div class="tab-pane fade show" role="tabpanel" id="reviews">
                                    <div class="reviews">
-                                       <div class="review-item">
-                                           <div class="rating">Product Rate: </div>
-                                           <h4>Incredible product</h4><span class="text-muted"><a href="#">John Smith</a>, 20 Jan 2018</span>
-                                           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec augue nunc, pretium at augue at, convallis pellentesque ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                       <div *ngFor="let item of producto.productComments" class="review-item">
+                                           <!--<div class="rating">Product Rate: </div> -->
+                                           <span class="text-muted">Anonymous,{{item.productCommentDate}}</span>
+                                           <p>{{item.productComment}}</p>
                                        </div>
-                                   </div>
-                                   <div class="reviews">
-                                       <div class="review-item">
-                                           <div class="rating">Product Rate:</div>
-                                           <h4>Incredible product</h4><span class="text-muted"><a href="#">John Smith</a>, 20 Jan 2018</span>
-                                           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec augue nunc, pretium at augue at, convallis pellentesque ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                       </div>
-                                   </div>
-                                   <div class="reviews">
-                                       <div class="review-item">
-                                           <div class="rating">Product Rate:</div>
-                                           <h4>Incredible product</h4><span class="text-muted"><a href="#">John Smith</a>, 20 Jan 2018</span>
-                                           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec augue nunc, pretium at augue at, convallis pellentesque ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                       </div>
+
+
+                                       <form class="form-group" action="index.html" method="post">
+                                         <div class="form-group">
+                                          <label for="exampleFormControlTextarea1">Input Your Comment</label>
+                                          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                       </form>
+
                                    </div>
                                </div>
                            </div>
