@@ -28,6 +28,7 @@ export class LandingPageComponent implements OnInit {
         this.url = "/landing_page/page";
       }
 
+
   ngOnInit() {
       this.activatedRoute.paramMap.subscribe(
         params =>{

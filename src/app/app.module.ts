@@ -48,7 +48,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 
 
 const routes: Routes = [
-  {path: '', redirectTo: '/landing_page/page', pathMatch: 'full'},
+  {path: '', redirectTo: '/landing_page', pathMatch: 'full'},
   {path: 'products', component: ProductComponent},
   {path: 'productsPage', component: ProductPageComponent},
   {path: 'productsPage/:id', component: ProductPageComponent},
