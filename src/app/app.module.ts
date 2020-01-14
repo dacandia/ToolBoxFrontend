@@ -1,6 +1,6 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {FormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 /**
@@ -13,6 +13,14 @@ import { ProductComponent } from './product/product.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { ProductPageComponent } from './product-page/product-page.component';
 import { CategoriasComponent} from './categorias/categorias.component';
+import { FormProductComponent } from './product/formproduct.component';
+import { PaginatorComponent } from './paginator/paginator.component';
+import {ImageProductComponent} from './product/images/imageproduct.component';
+/**
+ * Services
+ */
+import { ProductService } from './product/product.service';
+import {LandingService}from './landing-page/landing.service'
 /**
  * Material Modules
  */
@@ -27,16 +35,33 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { LayoutModule } from '@angular/cdk/layout';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { UserRegisterComponent } from './user-register/user-register.component';
+
+
+import { ClientProfileComponent } from './client-profile/client-profile.component';
+
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {FileUploadModule} from 'primeng/fileupload';
+import {AccordionModule} from 'primeng/accordion';
+import {CarouselModule} from 'primeng/carousel';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+
 
 const routes: Routes = [
-  {path: '', redirectTo: '/LandingPage', pathMatch: 'full'},
+  {path: '', redirectTo: '/landing_page', pathMatch: 'full'},
   {path: 'products', component: ProductComponent},
   {path: 'productsPage', component: ProductPageComponent},
-  {path: 'LandingPage', component: LandingPageComponent},
   {path: 'categorias', component: CategoriasComponent},
   {path: 'userLogin',component:UserLoginComponent},
-  {path: 'userRegister',component:UserRegisterComponent}
+  {path: 'userRegister',component:UserRegisterComponent},
+  {path: 'landing_page', component: LandingPageComponent},
+  {path: 'categorias', component: CategoriasComponent},
+  {path: 'products/page/:page', component: ProductComponent},
+  {path: 'products/form', component: FormProductComponent},
+  {path: 'products/form/:id', component: FormProductComponent},
+  {path: 'products/upload/:id', component: ImageProductComponent}
 ]
 
 @NgModule({
@@ -45,14 +70,19 @@ const routes: Routes = [
     SidenavComponent,
     FooterComponent,
     ProductComponent,
+    FormProductComponent,
+    PaginatorComponent,
+    ImageProductComponent,
     LandingPageComponent,
     CategoriasComponent,
     ProductPageComponent,
     UserLoginComponent,
-    UserRegisterComponent
+    UserRegisterComponent,
+    ClientProfileComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     HttpClientModule,
     MatButtonModule,
@@ -65,9 +95,19 @@ const routes: Routes = [
     MatCheckboxModule,
     LayoutModule,
     RouterModule.forRoot(routes),
-    FormsModule 
+    FormsModule, 
+    HttpClientModule,
+    FormsModule,
+    FileUploadModule,
+    AccordionModule,
+    CarouselModule,
+    ReactiveFormsModule,
+    MatAutocompleteModule,
+    MatInputModule,
+    MatFormFieldModule,
+    RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [ProductService,LandingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

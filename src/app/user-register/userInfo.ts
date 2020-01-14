@@ -1,13 +1,8 @@
-export class UserR{
-    userId: number;
-    userEmail: string;
+export class UserGeneral{
     userFullName: string;
-    userPassword: string;
-    userName: string;
-    userTelephone: string;
-    userAddress: string;
-    userLastName: string;
-    userEmailConfirmed: boolean;
-    userBirthDate: string;
-
+    userlastname: string;
+    useremail: string;
+    username: string;
+    userpassword: string;
+    userRole:string[]=[];
 }

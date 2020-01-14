@@ -1,0 +1,118 @@
+<ul class="alert alert-danger" *ngIf="errors?.length > 0">
+    <li *ngFor="let err of errors">
+    </li>
+</ul>
+
+<div class="card text-white">
+
+    <div class="card-header bg-dark">{{ title }}</div>
+
+    <div class="card-body">
+
+        <form #productForm="ngForm">
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="productName">Product Name</label>
+                    <input type="text" class="form-control" [(ngModel)]="product.productName" name="productName" maxlength="50" placeholder="Name" required #name="ngModel">
+                    <div class="alert alert-danger" *ngIf="name.invalid && (name.dirty || name.touched)">
+                        <div *ngIf="name.errors.required">
+                            The product name is required.
+                        </div>
+                        <div *ngIf="name.errors.required">
+                            The product name must be less than 50 characters.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="productBrand">Product Brand</label>
+                    <input type="text" class="form-control" [(ngModel)]="product.productBrand" name="productBrand" maxlength="50" placeholder="Brand">
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="productModel">Product Model</label>
+                    <input type="text" class="form-control" [(ngModel)]="product.productModel" name="productModel" maxlength="50" placeholder="Model">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="productDescription">Product Description</label>
+                <input type="text" class="form-control" [(ngModel)]="product.productDescription" name="productDescription" maxlength="50" placeholder="Description" required #description="ngModel">
+                <div class="alert alert-danger" *ngIf="description.invalid && (description.dirty || description.touched)">
+                    <div *ngIf="description.errors.required">
+                        The product name is required.
+                    </div>
+                    <div *ngIf="description.errors.required">
+                        The product name must be less than 50 characters.
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="productPrice">Product Price</label>
+                    <input type="text" class="form-control" [(ngModel)]="product.productPrice" name="productPrice" placeholder="Price">
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label for="productQuantity">Product Quantity</label>
+                    <input type="number" class="form-control" [(ngModel)]="product.productQuantity" name="productQuantity" placeholder="Quantity">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="validatedCustomFile" multiple (change)="detectFiles($event)">
+                    <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+                </div>
+                <div class="input-group-append">
+                    <button class="btn btn-success" type="button">Upload</button>
+                </div>
+            </div>
+
+
+            <div class="form-group my-5">
+                <div *ngIf="product.productImage?.length>0 || urls?.length>0" id="carouselImageControls" class="carousel slide" data-ride="carousel">
+
+                    <div class="carousel-inner" *ngIf="product.productImage?.length>0 else elseImages">
+                        <div class="carousel-item" *ngFor="let image of product.productImage; index as i; first as isFirst" [ngClass]="{active:isFirst}">
+                            <div class="d-flex justify-content-center">
+                                <img class="d-block w-25" src="http://localhost:8080/renter/uploads/img/{{image.imageRoute}}" alt="image.imageRoute">
+                            </div>
+                            <div class="d-flex justify-content-center mt-2">
+                                <button class="btn btn-danger" type="button" (click)="deleteImg(image.idImages)">Delete Image</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <ng-template #elseImages>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active" *ngFor="let url of urls; index as i; first as isFirst" [ngClass]="{active:isFirst}">
+                                <div class="d-flex justify-content-center">
+                                    <img class="d-block w-25 h-50 img-thumbnail rounded" [src]="url">
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                    <a class="carousel-control-prev" href="#carouselImageControls" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon text-dark" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselImageControls" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon text-dark" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-6">
+                    <button class="btn btn-info mr-5" [routerLink]="['/products']">Go Back</button>
+                    <button class="btn btn-success" role="button" (click)='createProduct()' *ngIf="!product.productId else elseBlock" [disabled]="!productForm.form.valid">Create</button>
+                    <ng-template #elseBlock>
+                        <button class="btn btn-warning" role="button" (click)="updateProduct()" [disabled]="!productForm.form.valid">Update</button>
+                    </ng-template>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

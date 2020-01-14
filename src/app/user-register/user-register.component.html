@@ -11,20 +11,34 @@
                 </div>
                 <div class="card-body">
                     <form class="form-signin" method="post">
+                        <ul class="alert alert-danger" *ngIf="errores?.length > 0">
+                            <li *ngFor="let err of errores">
+                              {{ err }}
+                            </li>
+                          </ul>
+
                         <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
                         <label for="inputName" class="sr-only">Name</label>
-                        <input  [(ngModel)]='user.userFullName' name="userFullName" type="text" id="inputName" class="form-control"  placeholder="Name" required="" autofocus="true">
+                        <input  [(ngModel)]='user.userFullName' name="userFullName" type="text" id="inputName"  class="form-control"  placeholder="Name" required autofocus="true">
                         <br>
                         <label for="inputLastName" class="sr-only">Last Name</label>
-                        <input [(ngModel)]='user.userLastName' type="text" id="inputLasName" class="form-control" placeholder="Last Name" required="" >
+                        <input [(ngModel)]='user.userlastname' name="userlastName" type="text" id="inputLasName" class="form-control" placeholder="Last Name"  required>
                         <br>
                         <label for="inputEmail" class="sr-only">Email address</label>
-                        <input [(ngModel)]='user.userEmail' type="email" id="inputEmail" class="form-control" placeholder="Email address" required="">
+                        <input [(ngModel)]='user.useremail' name="useremail" type="email" id="inputEmail" class="form-control" placeholder="Email address" #email="ngModel" required email>
+                        <div class="alert alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+                            <div *ngIf="email.errors.required">
+                              An email is required
+                            </div>
+                            <div *ngIf="email.errors.email">
+                              Please write a correct email format
+                            </div>
+                        </div>
                         <br>
                         <label for="inputPassword" class="sr-only">Password</label>
-                        <input [(ngModel)]='user.userPassword' type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+                        <input [(ngModel)]='user.userpassword' name="userpassword" type="password" id="inputPassword" class="form-control" placeholder="Password" required >
                         <br>
-                        <button class="btn btn-lg btn-primary btn-block" type="submit">Create account</button>
+                        <button (click)='create()' class="btn btn-lg btn-primary btn-block" type="submit">Create account</button>
     
                         <p class="mt-5 mb-3 text-muted">ToolBox© 2019-2020</p>
                       </form>
