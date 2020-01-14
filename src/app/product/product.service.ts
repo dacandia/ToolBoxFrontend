@@ -13,7 +13,10 @@ export class ProductService{
     private urlEndPointImg: string = 'http://localhost:8080/renter/uploads/img';
     private httpHeaders = new HttpHeaders({'Content-Type':'application/json'})
 
-    constructor(private http: HttpClient, private router: Router){  }
+    constructor(
+        private http: HttpClient, 
+        private router: Router
+    ){  }
 
     getProducts(page:number): Observable<any> {
         return this.http.get<Product[]>(this.urlEndPoint+'/page/'+page).pipe(
