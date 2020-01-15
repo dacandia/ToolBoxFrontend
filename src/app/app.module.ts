@@ -48,6 +48,7 @@ import {CarouselModule} from 'primeng/carousel';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 
 
 const routes: Routes = [
@@ -64,7 +65,8 @@ const routes: Routes = [
   {path: 'landing/page/:page', component: LandingPageComponent},
   {path: 'products/form', component: FormProductComponent},
   {path: 'products/form/:id', component: FormProductComponent},
-  {path: 'products/upload/:id', component: ImageProductComponent}
+  {path: 'products/upload/:id', component: ImageProductComponent},
+  {path: 'shoppingCard', component: ShoppingCartComponent}
 ]
 
 @NgModule({
@@ -81,7 +83,8 @@ const routes: Routes = [
     ProductPageComponent,
     UserLoginComponent,
     UserRegisterComponent,
-    ClientProfileComponent
+    ClientProfileComponent,
+    ShoppingCartComponent
   ],
   imports: [
     BrowserModule,
