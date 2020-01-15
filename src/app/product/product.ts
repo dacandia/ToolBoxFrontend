@@ -1,5 +1,5 @@
 import { Image } from './images/image';
-import {ProductComment} from './productComments';
+import {ProductComment} from './productComment';
 import { ProductCategory } from './productCategory';
 export class Product{
     productId: number;

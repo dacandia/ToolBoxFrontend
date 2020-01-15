@@ -6,11 +6,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map, catchError, tap } from 'rxjs/operators';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { ProductCategory } from './productCategory';
+import { ProductComment } from './productComment';
 
 @Injectable()
 export class ProductService{
     private urlEndPoint:string = 'http://localhost:8080/renter/products';
     private urlEndPointImg: string = 'http://localhost:8080/renter/uploads/img';
+    private urlEndPointIvan: string = 'http://localhost:8080/api/products';
     private httpHeaders = new HttpHeaders({'Content-Type':'application/json'})
 
     constructor(
@@ -121,4 +124,37 @@ export class ProductService{
     filteredProducts(term:string): Observable<Product[]>{
         return this.http.get<Product[]>(`${this.urlEndPoint}/filter-products/${term}`);
     }
+
+    getAllProductByCategory(): Observable<any>{
+        return this.http.get<any[]>(this.urlEndPointIvan+'/categories').pipe(
+            (response) => {
+                return response;
+            }    
+        );
+    }
+    
+    getProductsByCategory(category): Observable<ProductCategory[]>{
+        return this.http.get<ProductCategory[]>(`${this.urlEndPointIvan}/categories/${category}`).pipe(
+            tap( (response:any) => {
+                (response as ProductCategory[]).forEach(product => {
+                    return product;
+                })
+                return response;
+            })
+        );
+    }
+
+    createProductComment(comment: ProductComment): Observable<ProductComment>{
+        return this.http.post<ProductComment>(`${this.urlEndPointIvan}/comments/`,comment).pipe(
+            catchError(e => {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error when deleting the product',
+                    text: e.error.message
+                })
+                return throwError(e);
+            })
+        );
+    }
+
 }

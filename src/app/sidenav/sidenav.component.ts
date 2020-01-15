@@ -20,12 +20,14 @@ export class SidenavComponent implements OnInit {
    autocompleteControl = new FormControl();
    filteredProducts: Observable<Product[]>;
     user:string = "Daniel";
-    productCategory:Category[];
+    productCategories: Product[];
 
     @ViewChild('sidenav', {static: false}) sidenav: MatSidenav;
     reason = '';
 
-    constructor(private productService: ProductService, private router:Router, private categoriesService: CategoriesService){}
+    constructor(private productService: ProductService, 
+      private router:Router, 
+      private categoriesService: CategoriesService){}
 
     ngOnInit(){
       this.filteredProducts = this.autocompleteControl.valueChanges
@@ -54,9 +56,10 @@ export class SidenavComponent implements OnInit {
       }
 
       searchProductByCategory(){
-        this.categoriesService.getAllProductByCategory().subscribe(
-          (response) =>{
-            this.productCategory=response.content as Category[];
+        this.productService.getAllProductByCategory().subscribe(
+          response => {
+            this.productCategories = response;
+            console.log(this.productCategories);
           }
         );
       }

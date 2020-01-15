@@ -93,12 +93,12 @@
                                     </div>
 
                                     <br>
-                                    <form class="form-group" action="index.html" method="post">
+                                    <form class="form-group">
                                         <div class="form-group">
-                                            <label for="exampleFormControlTextarea1"><h2>Input Your Comment</h2></label>
-                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                            <label for="productComment"><h2>Input Your Comment</h2></label>
+                                            <textarea class="form-control" [(ngModel)]="productComment.productComment" id="productComment" name="productComment" rows="3"></textarea>
                                         </div>
-                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                        <button type="submit" class="btn btn-primary" (click)="sendComment()">Submit</button>
                                     </form>
 
                                 </div>
