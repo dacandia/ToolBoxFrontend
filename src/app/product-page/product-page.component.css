@@ -1,10 +1,17 @@
 .carousel-control-next-icon,
 .carousel-indicators,
 .carousel-control-prev-icon {
-  filter: invert(1);
-  font-size: 200px;
+    filter: invert(1);
+    font-size: 200px;
 }
+
 img {
-  height: 50vh;
-  weight: 30vh;
+    height: 50vh;
+    weight: 30vh;
+}
+
+.btn {
+    background-color: #f92a19;
+    border: 2px solid #f92a19;
+    color: white;
 }
