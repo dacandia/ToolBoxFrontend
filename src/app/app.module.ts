@@ -20,8 +20,9 @@ import {ImageProductComponent} from './product/images/imageproduct.component';
  * Services
  */
 import { ProductService } from './product/product.service';
-import {LandingService}from './landing-page/landing.service'
-/**
+import {LandingService}from './landing-page/landing.service';
+import { CategoriesService } from './categorias/categorias.service';
+/*
  * Material Modules
  */
 import { MatButtonModule } from '@angular/material/button';
@@ -33,6 +34,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { LayoutModule } from '@angular/cdk/layout';
+import { UserLoginComponent } from './user-login/user-login.component';
+import { UserRegisterComponent } from './user-register/user-register.component';
+
 
 import { ClientProfileComponent } from './client-profile/client-profile.component';
 
@@ -50,15 +54,21 @@ import { PaypalPaymentComponent } from './paypal-payment/paypal-payment.componen
 import { OrderHistoryComponent } from './order-history/order-history.component';
 import { OrderStatusComponent } from './order-status/order-status.component';
 import { UserEditInfoComponent } from './user-edit-info/user-edit-info.component';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 
 
 const routes: Routes = [
   {path: '', redirectTo: '/landing_page', pathMatch: 'full'},
   {path: 'products', component: ProductComponent},
   {path: 'productsPage', component: ProductPageComponent},
-  {path: 'landing_page', component: LandingPageComponent},
   {path: 'categorias', component: CategoriasComponent},
+  {path: 'userLogin',component:UserLoginComponent},
+  {path: 'userRegister',component:UserRegisterComponent},
+  {path: 'productsPage/:id', component: ProductPageComponent},
+  {path: 'landing_page', component: LandingPageComponent},
+  {path: 'categories/category/:category', component: CategoriasComponent},
   {path: 'products/page/:page', component: ProductComponent},
+  {path: 'landing_page/page/:page', component: LandingPageComponent},
   {path: 'products/form', component: FormProductComponent},
   {path: 'products/form/:id', component: FormProductComponent},
   {path: 'products/upload/:id', component: ImageProductComponent},
@@ -68,7 +78,8 @@ const routes: Routes = [
   {path: 'paymentmethod/paypal', component: PaypalPaymentComponent},
   {path: 'user/order-history', component: OrderHistoryComponent},
   {path: 'order-history/order-status', component: OrderStatusComponent},
-  {path: 'profile/user/:id/edit-info', component: UserEditInfoComponent}
+  {path: 'profile/user/:id/edit-info', component: UserEditInfoComponent},
+  {path: 'shoppingCard', component: ShoppingCartComponent}
 ]
 
 @NgModule({
@@ -89,12 +100,17 @@ const routes: Routes = [
     PaypalPaymentComponent,
     OrderHistoryComponent,
     OrderStatusComponent,
-    UserEditInfoComponent
+    UserEditInfoComponent,
+    UserLoginComponent,
+    UserRegisterComponent,
+    ClientProfileComponent,
+    ShoppingCartComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MatButtonModule,
     MatIconModule,
     MatToolbarModule,
@@ -104,6 +120,8 @@ const routes: Routes = [
     MatListModule,
     MatCheckboxModule,
     LayoutModule,
+    RouterModule.forRoot(routes),
+    FormsModule, 
     HttpClientModule,
     FormsModule,
     FileUploadModule,
@@ -115,7 +133,7 @@ const routes: Routes = [
     MatFormFieldModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [ProductService,LandingService],
+  providers: [ProductService,LandingService, CategoriesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

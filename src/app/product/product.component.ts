@@ -25,13 +25,18 @@ export class ProductComponent implements OnInit {
     
     products: Product[];
     paginator: any;
+    url: string;
 
     autocompleteControl = new FormControl();
-    findProducts:string[] = ['One', 'Two', 'Three'];
     filteredProducts: Observable<Product[]>;
 
-    constructor(private productService: ProductService, 
-        private activatedRoute: ActivatedRoute, private router: Router) { }
+    constructor(
+        private productService: ProductService, 
+        private activatedRoute: ActivatedRoute, 
+        private router: Router,
+    ) {
+      this.url = "/products/page/";
+     }
 
     ngOnInit() {
         this.activatedRoute.paramMap.subscribe(
@@ -89,6 +94,7 @@ export class ProductComponent implements OnInit {
         }) 
     }
 
+    //To make the search beetwen components
     private _filter(value: string): Observable<Product[]>{
         const filterValue = value.toLowerCase();
         return this.productService.filteredProducts(filterValue);

@@ -20,4 +20,11 @@ export class LandingService {
       map((response:any) => response.productos as ProductResponse[])
     );
   }
+
+  getOnliOneProduct(id):Observable<any>{
+    return this.http.get(`${this.urlEndPoint}/${id}`).pipe(
+      //se realiza el mapeo para convertir la respuesta de SPRING a un objeto obeservable tipo Landingpage[]
+      map((response:any) => response.productos as ProductResponse[])
+    );
+  }
 }

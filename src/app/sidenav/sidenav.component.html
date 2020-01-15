@@ -42,33 +42,42 @@
                     </div>
                     <!-- Grid column -->
                     <div class="col-sm-10 col-md-10 col-lg-10 text-center text-md-right">
+
                         <mat-nav-list>
+                            <!--Barra de busqueda -->
+                            <a class="nav-link navbar-text ">
+                                <form>
+                                    <mat-form-field class="example-full-width">
+                                        <input type="text" placeholder="Search Product" aria-label="Number" matInput [formControl]="autocompleteControl" [matAutocomplete]="auto">
+                                        <mat-autocomplete #auto="matAutocomplete" [displayWith]="showProductName" (optionSelected)="selectProduct($event)">
+                                            <mat-option *ngFor="let productOption of filteredProducts | async" [value]="productOption">
+                                                {{productOption.productName}}
+                                            </mat-option>
+                                        </mat-autocomplete>
+                                    </mat-form-field>
+                                </form>
+                            </a>
+
                             <a class="nav-link navbar-text " [routerLink]="['/landing_page']">Home</a>
 
-                            <a class="text-white dropdown-toggle mt-3 mb-4" id="dropdownMenuButton" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
+                            <a class="text-white dropdown-toggle mt-3 mb-4" id="dropdownMenuButton" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" (click)="searchProductByCategory()">Categories</a>
 
                             <div class="dropdown-menu w-auto" aria-labelledby="dropdownMenuButton ">
-                                <a class="dropdown-item" routerLink="/categorias "><i class='fas fa-angle-right'></i> Mechanics</a>
-                                <br>
-                                <a class="dropdown-item" routerLink="/categorias "><i class='fas fa-angle-right'></i> Carpentry</a>
-                                <br>
-                                <a class="dropdown-item" routerLink="/categoris "><i class='fas fa-angle-right'></i> Electricity</a>
+                                <div *ngFor="let category of productCategories">
+                                    <a class="dropdown-item" [routerLink]="['/categories/category', category]"><i class='fas fa-angle-right'></i>{{category}}</a>
+                                    <br>
+                                </div>
+
                             </div>
 
-                            <a class="nav-link navbar-text " href="# ">About us</a>
-                            <a class="nav-link navbar-text " href="# "><span><i class="fas fa-sign-in-alt "></i></span> Sign Up</a>
-                            <a class="nav-link navbar-text " href="# "><span><i class="fas fa-user "></i></span> Login</a>
+                            <a class="nav-link navbar-text " [routerLink]="['/shoppingCard']"><span><i class="fas fa-shopping-cart "></i></span></a>
+                            <a *ngIf="auth.isAuthenticated()" (click)="logout()" class="nav-link navbar-text" href="#"><span><i class="fas fa-sign-out-alt "></i></span> Logout</a>
+                            <a *ngIf="!auth.isAuthenticated()" class="nav-link navbar-text " [routerLink]="['/userLogin']"><span><i class="fas fa-user "></i></span> Login</a>
                         </mat-nav-list>
                     </div>
                 </mat-toolbar>
             </div>
         </div>
-        <div class="container-fluid">
-            <div class="row">
-                <header class="header col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">Header</header>
-            </div>
-        </div>
-
         <ng-content></ng-content>
         <!-- Add Content Here -->
     </mat-sidenav-content>

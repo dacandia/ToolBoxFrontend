@@ -1,68 +1,34 @@
-
-<!--
-<div class="card bg-light mb-3">
-  <div class="card-header">Productos</div>
-  <div class="card-body">
-    <h5 class="card-title">Listado de Productos</h5>
-<table class="table table-bordered table-striped">
-  <thead>
-    <tr>
-      <th>description</th>
-      <th>brand</th>
-      <th>price</th>
-      <th>model</th>
-      <th>name</th>
-      <th>quantity</th>
-      <th>date</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let productr of ProductResponses">
-      <td>{{productr.products.productDescription}}</td>
-      <td>{{productr.products.productBrand}}</td>
-      <td>{{productr.products.productPrice}}</td>
-      <td>{{productr.products.productModel}}</td>
-      <td>{{productr.products.productName}}</td>
-      <td>{{productr.products.productQuantity}}</td>
-      <td>{{productr.products.productDate}}</td>
-    </tr>
-  </tbody>
-</table>
-
-  </div>
-</div>
-
--->
-
 <main class="page landing-page">
     <section id="Acerca_de_Nosotros" class="clean-block about-us">
-      <div class="container" id="allproducts">
-          <div id="TituloCategoria" class="block-heading">
-              <h2 class="text-info text-center">All the Products</h2>
-              <p class="text-center">Everything you need in one place!.</p>
-          </div>
-          <div class="row justify-content-center">
-              <div *ngFor="let productr2 of ProductResponses" class="col-sm-12 col-md-4 col-lg-4 text-center">
-                <!--  -->
-                  <div  class="card clean-card text-center"><img class="card-img-top w-100 d-block" src="assets/images/bernier.jpg">
-                      <div class="card-body info">
-                          <h4 class="card-title">{{productr2.products.productName}}</h4>
-                          <h6 class="card-subtitle mb-2 text-muted">{{productr2.products.productBrand}}</h6>
-                          <p class="card-text">{{productr2.products.productDescription}}</p>
-                          <h6 class="card-subtitle mb-2 text-muted">${{productr2.products.productPrice}}</h6>
-                          <button class="btn btn-primary" type="button" routerLink="/productsPage">RENTAR</button>
+        <div class="container" id="allproducts">
+            <div id="TituloCategoria" class="block-heading">
+                <h2 class="text-info text-center">All the Products</h2>
+                <p class="text-center">Everything you need in one place!.</p>
+            </div>
+            <div class="row justify-content-center">
+                <div *ngFor="let product of products" class="col-sm-12 col-md-4 col-lg-4 text-center">
+                    <!--  -->
+                    <div class="card clean-card text-center">
+                        <img class="card-img-top d-block" src="http://localhost:8080/renter/uploads/img/{{product.productImage[0].imageRoute}}">
+                        <div class="card-body info">
+                            <h4 class="card-title">{{product.productName}}</h4>
+                            <h6 class="card-subtitle mb-2 text-muted">{{product.productBrand}}</h6>
+                            <p class="card-text">{{product.productDescription}}</p>
+                            <h6 class="card-subtitle mb-2 text-muted">${{product.productPrice}}</h6>
+                            <button class="btn" type="button" [routerLink]="['/productsPage',product.productId]">Rent</button>
 
-                      </div>
-                  </div>
-                  <br>
-              </div>
-
-          </div>
-<br>
-<br>
-      </div>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+            </div>
+            <br>
+            <br>
+        </div>
 
     </section>
+
+    <paginator-nav *ngIf="paginator" [paginator]="paginator" [url]="url"></paginator-nav>
 </main>
 
 <br>

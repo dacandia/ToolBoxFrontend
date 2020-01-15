@@ -1,0 +1,15 @@
+img {
+    height: 50vh;
+    weight: 30vh;
+}
+
+.btn {
+    background-color: #f92a19;
+    border: 2px solid #f92a19;
+    color: white;
+}
+
+.btn:active {
+    background-color: #f92a19;
+    color: white;
+}
