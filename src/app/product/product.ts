@@ -1,4 +1,6 @@
 import { Image } from './images/image';
+import {ProductComment} from './productComment';
+import { ProductCategory } from './productCategory';
 export class Product{
     productId: number;
     productName: string;
@@ -9,4 +11,6 @@ export class Product{
     productQuantity: number;
     productDate: string;
     productImage: Image[] = [];
+    productComments: ProductComment[] = [];
+    productCategory: ProductCategory;
 }

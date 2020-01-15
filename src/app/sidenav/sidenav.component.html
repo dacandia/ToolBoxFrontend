@@ -44,27 +44,30 @@
                     <div class="col-sm-10 col-md-10 col-lg-10 text-center text-md-right">
 
                         <mat-nav-list>
-                        <!--Barra de busqueda -->
-                          <a class="nav-link navbar-text ">
-                            <form>
-                                <mat-form-field class="example-full-width">
-                                    <input type="text" placeholder="Search Product" aria-label="Number" matInput [formControl]="autocompleteControl" [matAutocomplete]="auto">
-                                    <mat-autocomplete #auto="matAutocomplete" [displayWith]="showProductName" (optionSelected)="selectProduct($event)">
-                                        <mat-option *ngFor="let productOption of filteredProducts | async" [value]="productOption">
-                                            {{productOption.productName}}
-                                        </mat-option>
-                                    </mat-autocomplete>
-                                </mat-form-field>
-                            </form>
-                          </a>
+                            <!--Barra de busqueda -->
+                            <a class="nav-link navbar-text ">
+                                <form>
+                                    <mat-form-field class="example-full-width">
+                                        <input type="text" placeholder="Search Product" aria-label="Number" matInput [formControl]="autocompleteControl" [matAutocomplete]="auto">
+                                        <mat-autocomplete #auto="matAutocomplete" [displayWith]="showProductName" (optionSelected)="selectProduct($event)">
+                                            <mat-option *ngFor="let productOption of filteredProducts | async" [value]="productOption">
+                                                {{productOption.productName}}
+                                            </mat-option>
+                                        </mat-autocomplete>
+                                    </mat-form-field>
+                                </form>
+                            </a>
 
                             <a class="nav-link navbar-text " [routerLink]="['/landing_page']">Home</a>
 
                             <a class="text-white dropdown-toggle mt-3 mb-4" id="dropdownMenuButton" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" (click)="searchProductByCategory()">Categories</a>
 
                             <div class="dropdown-menu w-auto" aria-labelledby="dropdownMenuButton ">
-                                <a *ngFor="let category of productCategory" class="dropdown-item" [routerLink]="['/categorias']"><i class='fas fa-angle-right'></i>{{category.productCategory}}</a>
-                                <br>
+                                <div *ngFor="let category of productCategories">
+                                    <a class="dropdown-item" [routerLink]="['/categories/category', category]"><i class='fas fa-angle-right'></i>{{category}}</a>
+                                    <br>
+                                </div>
+
                             </div>
 
                             <a class="nav-link navbar-text " [routerLink]="['/shoppingCard']"><span><i class="fas fa-shopping-cart "></i></span></a>

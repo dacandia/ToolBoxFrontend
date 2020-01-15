@@ -15,38 +15,35 @@ export class LandingPageComponent implements OnInit {
   //se crea un arreglo para guardar los datos de acuerdo al POJO creado (nota.mandar a llamar deacuerdo a lo que quiera recibir)
   ProductResponses:ProductResponse[];
   //se injecta la dependencia landing service
-  paginator:any;
   products: Product[];
+  paginator:any;
+  url: string;
 
-  constructor(private productService: ProductService,private productos: LandingService,private activatedRoute: ActivatedRoute, private router: Router) { }
+  constructor(
+      private productService: ProductService,
+      private productos: LandingService,
+      private activatedRoute: ActivatedRoute, 
+      private router: Router) 
+      {
+        this.url = "/landing_page/page";
+      }
+
 
   ngOnInit() {
-
-    this.activatedRoute.paramMap.subscribe(
-      params =>{
-        let page:number = +params.get('page');
-        if(!page){
-          page = 0;
-        }
-        this.productService.getProducts(page).subscribe(
-          response => {
-            this.products = response.content as Product[];
-            this.paginator = response;
+      this.activatedRoute.paramMap.subscribe(
+        params =>{
+          let page:number = +params.get('page');
+          if(!page){
+            page = 0;
           }
-        );
-      }
-    );
-
-    //se le assigna la dependencia de landingservice, el metodo "get productos" a nuestra dependencia
-    this.productos.getProductos().subscribe(
-      //se crea una funcion anonima para suscribirse a al observable
-    (productresponse) => {
-  //  let productresponse2=productresponse.length
-  this.ProductResponses = productresponse
-console.log(this.ProductResponses)
+          this.productService.getProducts(page).subscribe(
+            response => {
+              this.products = response.content as Product[];
+              this.paginator = response;
+            }
+          );
+        }
+      );
     }
-    );
-
-  }
 
 }
