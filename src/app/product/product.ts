@@ -12,5 +12,5 @@ export class Product{
     productDate: string;
     productImage: Image[] = [];
     productComments: ProductComment[] = [];
-    productCategory: ProductCategory;
+    productCategory: ProductCategory[] = [];
 }

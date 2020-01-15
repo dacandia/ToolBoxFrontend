@@ -21,7 +21,7 @@ export class SidenavComponent implements OnInit {
    products: Product[];
    autocompleteControl = new FormControl();
    filteredProducts: Observable<Product[]>;
-    user:string = "Daniel";
+    user:string = "";
     productCategories: Product[];
 
     @ViewChild('sidenav', {static: false}) sidenav: MatSidenav;
@@ -30,7 +30,8 @@ export class SidenavComponent implements OnInit {
     constructor(private productService: ProductService, 
       private router:Router, 
       private categoriesService: CategoriesService,
-      private auth:AuthService){}
+      private auth:AuthService){
+      }
 
     ngOnInit(){
       this.filteredProducts = this.autocompleteControl.valueChanges

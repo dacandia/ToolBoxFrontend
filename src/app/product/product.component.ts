@@ -7,6 +7,7 @@ import { FormControl } from '@angular/forms';
 import { startWith, map, flatMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+import { AuthService } from '../user-login/auth-service';
 
 @Component({
     selector: 'app-product',
@@ -34,8 +35,10 @@ export class ProductComponent implements OnInit {
         private productService: ProductService, 
         private activatedRoute: ActivatedRoute, 
         private router: Router,
+        private auth: AuthService
     ) {
       this.url = "/products/page/";
+      console.log(auth.usuario.userId);
      }
 
     ngOnInit() {

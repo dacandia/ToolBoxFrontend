@@ -4,6 +4,7 @@ import {Image} from './images/image';
 import { ProductService } from './product.service';
 import { Router,ActivatedRoute } from '@angular/router';
 import swal from 'sweetalert2';
+import { ProductCategory } from './productCategory';
 
 @Component({
     selector: 'app-form-product',
@@ -13,8 +14,10 @@ import swal from 'sweetalert2';
 
 export class FormProductComponent implements OnInit{
 
-    protected product: Product = new Product()
-    protected title:string = "Add Product"
+    protected product: Product = new Product();
+    protected productCategories: ProductCategory[];
+    protected productCategory: ProductCategory;
+    protected title:string = "Add Product";
     protected errors:string[];
     protected urls = new Array<string>();
     protected selectedImages: Array<Image>;
@@ -35,7 +38,10 @@ export class FormProductComponent implements OnInit{
         this.activatedRoute.params.subscribe(params => {
             let id = params['id']
             if(id){
-                this.productService.getProduct(id).subscribe( (product) => this.product = product)
+                this.productService.getProduct(id).subscribe( (product) => {
+                    this.product = product
+                    console.log(product);
+                })
             }
         })
     }
@@ -59,6 +65,7 @@ export class FormProductComponent implements OnInit{
     }
 
     updateProduct(): void {
+        console.log(this.productCategory)
         this.productService.updateProduct(this.product, this.files).subscribe( 
             product => {
                 this.router.navigate(['/products'])
@@ -92,5 +99,13 @@ export class FormProductComponent implements OnInit{
 
     deleteImg(imageId){
         this.productService.deleteImage(imageId).subscribe();
+    }
+
+    selectCategories(){
+        this.productService.getAllProductByCategory().subscribe(
+            (productCategories) => {
+                this.productCategories = productCategories
+            }
+        ) 
     }
 }

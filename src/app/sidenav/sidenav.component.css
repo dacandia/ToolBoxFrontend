@@ -48,3 +48,8 @@
 .header {
     background-color: #062835;
 }
+
+.card {
+    max-height: 500px;
+    max-width: 500px;
+}

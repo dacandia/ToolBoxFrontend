@@ -8,8 +8,13 @@
             <div class="row justify-content-center">
                 <div *ngFor="let product of products" class="col-sm-12 col-md-4 col-lg-4 text-center">
                     <!--  -->
-                    <div class="card clean-card text-center">
-                        <img class="card-img-top d-block" src="http://localhost:8080/renter/uploads/img/{{product.productImage[0].imageRoute}}">
+                    <div class="card clean-card text-center" style="length: 18rem;">
+                        <div *ngIf="product.productImage?.length>0 else elseImage">
+                            <img class="card-img-top d-block" src="http://localhost:8080/renter/uploads/img/{{product.productImage[0].imageRoute}}">
+                        </div>
+                        <ng-template #elseImage>
+                            <img class="card-img-top d-block" src="assets/images/notfound.png">
+                        </ng-template>
                         <div class="card-body info">
                             <h4 class="card-title">{{product.productName}}</h4>
                             <h6 class="card-subtitle mb-2 text-muted">{{product.productBrand}}</h6>

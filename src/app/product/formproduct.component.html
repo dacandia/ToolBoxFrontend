@@ -12,7 +12,7 @@
         <form #productForm="ngForm">
             <div class="form-row">
                 <div class="form-group col-md-4">
-                    <label for="productName">Product Name</label>
+                    <label class="text-dark" for="productName">Product Name</label>
                     <input type="text" class="form-control" [(ngModel)]="product.productName" name="productName" maxlength="50" placeholder="Name" required #name="ngModel">
                     <div class="alert alert-danger" *ngIf="name.invalid && (name.dirty || name.touched)">
                         <div *ngIf="name.errors.required">
@@ -24,18 +24,18 @@
                     </div>
                 </div>
                 <div class="form-group col-md-4">
-                    <label for="productBrand">Product Brand</label>
+                    <label class="text-dark" for="productBrand">Product Brand</label>
                     <input type="text" class="form-control" [(ngModel)]="product.productBrand" name="productBrand" maxlength="50" placeholder="Brand">
                 </div>
 
                 <div class="form-group col-md-4">
-                    <label for="productModel">Product Model</label>
+                    <label class="text-dark" for="productModel">Product Model</label>
                     <input type="text" class="form-control" [(ngModel)]="product.productModel" name="productModel" maxlength="50" placeholder="Model">
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="productDescription">Product Description</label>
+                <label class="text-dark" for="productDescription">Product Description</label>
                 <input type="text" class="form-control" [(ngModel)]="product.productDescription" name="productDescription" maxlength="50" placeholder="Description" required #description="ngModel">
                 <div class="alert alert-danger" *ngIf="description.invalid && (description.dirty || description.touched)">
                     <div *ngIf="description.errors.required">
@@ -49,13 +49,23 @@
 
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="productPrice">Product Price</label>
+                    <label class="text-dark" for="productPrice">Product Price</label>
                     <input type="text" class="form-control" [(ngModel)]="product.productPrice" name="productPrice" placeholder="Price">
                 </div>
 
                 <div class="form-group col-md-6">
-                    <label for="productQuantity">Product Quantity</label>
+                    <label class="text-dark" for="productQuantity">Product Quantity</label>
                     <input type="number" class="form-control" [(ngModel)]="product.productQuantity" name="productQuantity" placeholder="Quantity">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label class="text-dark" for="productQuantity">Choose a Category</label>
+                    <select class="form-control" id="productCategory" name="productCategory" (click)="selectCategories()" name="productCategory" [(ngModel)]="product.productCategory[0].productCategory">
+                        <option disabled selected>{{product.productCategory[0].productCategory}}</option>
+                        <option *ngFor="let category of productCategories">{{category}}</option>
+                    </select>
                 </div>
             </div>
 
@@ -65,7 +75,6 @@
                     <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
                 </div>
             </div>
-
 
             <div class="form-group my-5">
                 <div *ngIf="product.productImage?.length>0 || urls?.length>0" id="carouselImageControls" class="carousel slide" data-ride="carousel">

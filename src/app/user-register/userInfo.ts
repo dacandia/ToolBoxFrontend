@@ -1,4 +1,5 @@
 export class UserGeneral{
+    userId:number;
     userFullName: string;
     userlastname: string;
     useremail: string;
