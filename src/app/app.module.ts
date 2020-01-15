@@ -44,6 +44,12 @@ import {CarouselModule} from 'primeng/carousel';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { PaymentMethodComponent } from './payment-method/payment-method.component';
+import { CardPaymentComponent } from './card-payment/card-payment.component';
+import { PaypalPaymentComponent } from './paypal-payment/paypal-payment.component';
+import { OrderHistoryComponent } from './order-history/order-history.component';
+import { OrderStatusComponent } from './order-status/order-status.component';
+import { UserEditInfoComponent } from './user-edit-info/user-edit-info.component';
 
 
 const routes: Routes = [
@@ -55,7 +61,14 @@ const routes: Routes = [
   {path: 'products/page/:page', component: ProductComponent},
   {path: 'products/form', component: FormProductComponent},
   {path: 'products/form/:id', component: FormProductComponent},
-  {path: 'products/upload/:id', component: ImageProductComponent}
+  {path: 'products/upload/:id', component: ImageProductComponent},
+  {path: 'profile/user/:id', component: ClientProfileComponent},
+  {path: 'paymentmethod', component: PaymentMethodComponent},
+  {path: 'paymentmethod/card', component: CardPaymentComponent},
+  {path: 'paymentmethod/paypal', component: PaypalPaymentComponent},
+  {path: 'user/order-history', component: OrderHistoryComponent},
+  {path: 'order-history/order-status', component: OrderStatusComponent},
+  {path: 'profile/user/:id/edit-info', component: UserEditInfoComponent}
 ]
 
 @NgModule({
@@ -70,7 +83,13 @@ const routes: Routes = [
     LandingPageComponent,
     CategoriasComponent,
     ProductPageComponent,
-    ClientProfileComponent
+    ClientProfileComponent,
+    PaymentMethodComponent,
+    CardPaymentComponent,
+    PaypalPaymentComponent,
+    OrderHistoryComponent,
+    OrderStatusComponent,
+    UserEditInfoComponent
   ],
   imports: [
     BrowserModule,
