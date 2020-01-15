@@ -70,9 +70,9 @@
 
                             </div>
 
-                            <a class="nav-link navbar-text " href="# ">About us</a>
-                            <a class="nav-link navbar-text " href="# "><span><i class="fas fa-sign-in-alt "></i></span> Sign Up</a>
-                            <a class="nav-link navbar-text " href="# "><span><i class="fas fa-user "></i></span> Login</a>
+                            <a class="nav-link navbar-text " [routerLink]="['/shoppingCard']"><span><i class="fas fa-shopping-cart "></i></span></a>
+                            <a *ngIf="auth.isAuthenticated()" (click)="logout()" class="nav-link navbar-text" href="#"><span><i class="fas fa-sign-out-alt "></i></span> Logout</a>
+                            <a *ngIf="!auth.isAuthenticated()" class="nav-link navbar-text " [routerLink]="['/userLogin']"><span><i class="fas fa-user "></i></span> Login</a>
                         </mat-nav-list>
                     </div>
                 </mat-toolbar>

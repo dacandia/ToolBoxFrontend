@@ -1,6 +1,8 @@
 import { Component, ViewChild,OnInit } from '@angular/core';
 import { Product } from '../product/product';
 import { MatSidenav } from '@angular/material/sidenav';
+import { AuthService } from '../user-login/auth-service';
+import Swal from 'sweetalert2';
 import { ProductService } from '../product/product.service';
 import { FormControl } from '@angular/forms';
 import { map, flatMap } from 'rxjs/operators';
@@ -27,7 +29,8 @@ export class SidenavComponent implements OnInit {
 
     constructor(private productService: ProductService, 
       private router:Router, 
-      private categoriesService: CategoriesService){}
+      private categoriesService: CategoriesService,
+      private auth:AuthService){}
 
     ngOnInit(){
       this.filteredProducts = this.autocompleteControl.valueChanges
@@ -69,5 +72,14 @@ export class SidenavComponent implements OnInit {
         this.sidenav.close();
     }
     shouldRun = true;
+
+ 
+
+    logout(): void {
+      let username = this.auth.usuario.userFullName;
+      this.auth.logout();
+      Swal.fire('Logout', `Hola ${username}, has cerrado sesión con éxito!`, 'success');
+      this.router.navigate(['/landing_page']);
+    }
 
 }

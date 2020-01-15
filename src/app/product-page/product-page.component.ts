@@ -13,26 +13,60 @@ import swal from 'sweetalert2';
   templateUrl: './product-page.component.html',
   styleUrls: ['./product-page.component.css']
 })
-export class ProductPageComponent implements OnInit, OnChanges {
+export class ProductPageComponent implements OnInit {
 
   private producto: ProductResponse;
+  private _cartItem: Product;
+  private _cartsItems: Product[];
+
+  constructor(private productoService: LandingService, 
+    private cartProductService : ProductService,
+    private router:Router,
+    private activatedRoute:ActivatedRoute,
+    private productService: ProductService ) { }
   protected product: Product = new Product();
   protected productComment =  new ProductComment();
   currentActivatedRoute: any;
   params: any;
 
-  constructor(
-      private productoService: LandingService, 
-      private router:Router,
-      private activatedRoute:ActivatedRoute,
-      private productService: ProductService ) { }
+
 
   ngOnInit() {
     this.cargarCliente();
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
+  addToCart():void{
+
+    this._cartsItems = [];
+    if(localStorage.getItem('cart') != null)
+    {
+      this._cartsItems = JSON.parse(
+        localStorage.getItem('cart')
+      )
+
+      
+    }
+    this._cartItem = new Product();
+    this.activatedRoute.params.subscribe(params =>{
+      let id = params['id']
+      if(id){
+        this.cartProductService.getProduct(id).subscribe(
+          (response) => {
+            this._cartItem.productId = response.productId;
+            this._cartItem.productName = response.productName;
+            this._cartItem.productDescription = response.productDescription;
+            this._cartItem.productPrice = response.productPrice;
+            this._cartItem.productQuantity = response.productQuantity;
+            this._cartItem.productImage = response.productImage;
+            this._cartsItems.push(this._cartItem);
+            localStorage.setItem(
+              'cart',JSON.stringify(this._cartsItems)
+            )      
+          } 
+        )
+         
+      }
+    })   
   }
 
   cargarCliente(): void{

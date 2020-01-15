@@ -34,6 +34,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { LayoutModule } from '@angular/cdk/layout';
+import { UserLoginComponent } from './user-login/user-login.component';
+import { UserRegisterComponent } from './user-register/user-register.component';
+
 
 import { ClientProfileComponent } from './client-profile/client-profile.component';
 
@@ -45,12 +48,16 @@ import {CarouselModule} from 'primeng/carousel';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 
 
 const routes: Routes = [
   {path: '', redirectTo: '/landing_page', pathMatch: 'full'},
   {path: 'products', component: ProductComponent},
   {path: 'productsPage', component: ProductPageComponent},
+  {path: 'categorias', component: CategoriasComponent},
+  {path: 'userLogin',component:UserLoginComponent},
+  {path: 'userRegister',component:UserRegisterComponent},
   {path: 'productsPage/:id', component: ProductPageComponent},
   {path: 'landing_page', component: LandingPageComponent},
   {path: 'categories/category/:category', component: CategoriasComponent},
@@ -58,7 +65,8 @@ const routes: Routes = [
   {path: 'landing_page/page/:page', component: LandingPageComponent},
   {path: 'products/form', component: FormProductComponent},
   {path: 'products/form/:id', component: FormProductComponent},
-  {path: 'products/upload/:id', component: ImageProductComponent}
+  {path: 'products/upload/:id', component: ImageProductComponent},
+  {path: 'shoppingCard', component: ShoppingCartComponent}
 ]
 
 @NgModule({
@@ -73,12 +81,16 @@ const routes: Routes = [
     LandingPageComponent,
     CategoriasComponent,
     ProductPageComponent,
-    ClientProfileComponent
+    UserLoginComponent,
+    UserRegisterComponent,
+    ClientProfileComponent,
+    ShoppingCartComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MatButtonModule,
     MatIconModule,
     MatToolbarModule,
@@ -88,6 +100,8 @@ const routes: Routes = [
     MatListModule,
     MatCheckboxModule,
     LayoutModule,
+    RouterModule.forRoot(routes),
+    FormsModule, 
     HttpClientModule,
     FormsModule,
     FileUploadModule,
