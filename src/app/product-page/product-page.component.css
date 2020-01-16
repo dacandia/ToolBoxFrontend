@@ -10,8 +10,7 @@ img {
     weight: 30vh;
 }
 
-.btn {
+.customBtn {
     background-color: #f92a19;
-    border: 2px solid #f92a19;
     color: white;
 }

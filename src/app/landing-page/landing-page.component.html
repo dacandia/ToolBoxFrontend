@@ -8,9 +8,9 @@
             <div class="row justify-content-center">
                 <div *ngFor="let product of products" class="col-sm-12 col-md-4 col-lg-4 text-center">
                     <!--  -->
-                    <div class="card clean-card text-center" style="length: 18rem;">
+                    <div class="card custom-card clean-card text-center">
                         <div *ngIf="product.productImage?.length>0 else elseImage">
-                            <img class="card-img-top d-block" src="http://localhost:8080/renter/uploads/img/{{product.productImage[0].imageRoute}}">
+                            <img class="card-img-top d-block h-10 w-10" src="http://localhost:8080/renter/uploads/img/{{product.productImage[0].imageRoute}}">
                         </div>
                         <ng-template #elseImage>
                             <img class="card-img-top d-block" src="assets/images/notfound.png">
@@ -19,7 +19,7 @@
                             <h4 class="card-title">{{product.productName}}</h4>
                             <h6 class="card-subtitle mb-2 text-muted">{{product.productBrand}}</h6>
                             <p class="card-text">{{product.productDescription}}</p>
-                            <h6 class="card-subtitle mb-2 text-muted">${{product.productPrice}}</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">${{product.productPrice}} MXN</h6>
                             <button class="btn" type="button" [routerLink]="['/productsPage',product.productId]">Rent</button>
 
                         </div>

@@ -39,6 +39,7 @@ export class SidenavComponent implements OnInit {
               map( value => typeof value === 'string' ? value : value.productName),
               flatMap( value => value ? this._filter(value) : [])
           );
+          this.searchProductByCategory();
       }
 
       private _filter(value: string): Observable<Product[]>{

@@ -1,8 +1,7 @@
 <div>
     <div class="card shopping-cart">
         <div class="card-header bg-dark text-light">
-            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-            Shopping cart
+            <i class="fa fa-shopping-cart" aria-hidden="true"></i> Shopping cart
             <a href="" class="btn btn-outline-info btn-sm pull-right">Continue shopping</a>
             <div class="clearfix"></div>
         </div>
@@ -11,7 +10,7 @@
             <div class="row" *ngFor="let cartitem of cartItems; let i = index">
 
                 <div class="col-12 col-sm-12 col-md-2 col-xs-12 col-lg-12">
-                    <img class="img-responsive" src="" alt="prewiew" width="120" height="80">
+                    <img class="img-responsive" src="http://localhost:8080/renter/uploads/img/{{cartitem.productImage[0].imageRoute}}" alt="prewiew" width="120" height="80">
                 </div>
                 <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-6">
                     <h4 class="product-name"><strong>{{cartitem.productName}}</strong></h4>
@@ -40,25 +39,22 @@
                             <tbody>
                                 <tr>
                                     <td *ngIf="cartPrices[i]" class="price">
-                                        ${{cartitem.productPrice * cartPrices[i]}}
+                                        ${{cartitem.productPrice * cartPrices[i]}} MXN
 
                                     </td>
                                     <td *ngIf="!cartPrices[i]" class="price">
-                                        ${{cartitem.productPrice}}
+                                        ${{cartitem.productPrice}} MXN
 
                                     </td>
                                     <td>
                                         <div class="quantity">
-                                            <input id="days" type="number" (click)="multiply()"
-                                                [(ngModel)]="cartPrices[i]" step="1" max="99" min="1" value="1"
-                                                title="Qty" class="qty" size="4">
+                                            <input id="days" type="number" (click)="multiply()" [(ngModel)]="cartPrices[i]" step="1" max="99" min="1" value="1" title="Qty" class="qty" size="4">
                                         </div>
                                     </td>
                                     <td>
                                         <div class="col-2 col-sm-2 col-md-2 text-right">
 
-                                            <button type="button" class="btn btn-outline-danger btn-xs"
-                                                (click)="deleteItem(cartitem.productId,i)">
+                                            <button type="button" class="btn btn-outline-danger btn-xs" (click)="deleteItem(cartitem.productId,i)">
                                                 <i class="fa fa-trash" aria-hidden="true"></i>
                                             </button>
                                         </div>
@@ -74,7 +70,7 @@
             </div>
             <hr>
             <div class="pull-right" style="margin: 5px">
-                Total price: $ <b>{{totals}}</b>
+                Total price: $ <b>{{totals}}</b> MXN
             </div>
         </div>
         <!-- END PRODUCT -->
@@ -90,33 +86,31 @@
                         <div class="card-body text-dark">
                             <div class="custom-control custom-radio">
                                 <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input" value="paypal">
-                                
+
                                 <label class="custom-control-label" for="customRadio1">
                                     <i class="fab fa-paypal"></i>
                                     PayPal
                                 </label>
-                              </div>
-                              <div class="custom-control custom-radio">
+                            </div>
+                            <div class="custom-control custom-radio">
                                 <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input" value="creditCard">
-                                
+
                                 <label class="custom-control-label" for="customRadio2">
                                     <i class="fa fa-credit-card"></i>
                                     Credit Card
                                 </label>
-                              </div>
-                              <br>
-                            <button type="button" (click)="check()" class="btn btn-success pull-right"
-                                *ngIf="auth.isAuthenticated()">Checkout</button>
-                          
+                            </div>
+                            <br>
+                            <button type="button" (click)="check()" class="btn btn-success pull-right" *ngIf="auth.isAuthenticated()">Checkout</button>
+
                         </div>
                     </div>
 
 
-                 
+
                 </form>
             </div>
-            <a href="" class="btn btn-success pull-right" *ngIf="!auth.isAuthenticated()"
-                routerLink="/userLogin">Checkout</a>           
+            <a href="" class="btn btn-success pull-right" *ngIf="!auth.isAuthenticated()" routerLink="/userLogin">Checkout</a>
         </div>
         <div class="pull-right" style="margin: 10px" *ngIf="cartItems.length == 0">
             <div class="alert-info">

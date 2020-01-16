@@ -16,7 +16,7 @@ export class FormProductComponent implements OnInit{
 
     protected product: Product = new Product();
     protected productCategories: ProductCategory[];
-    protected productCategory: ProductCategory;
+    protected productCategory: ProductCategory[];
     protected title:string = "Add Product";
     protected errors:string[];
     protected urls = new Array<string>();

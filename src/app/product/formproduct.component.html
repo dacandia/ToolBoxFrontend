@@ -36,7 +36,7 @@
 
             <div class="form-group">
                 <label class="text-dark" for="productDescription">Product Description</label>
-                <input type="text" class="form-control" [(ngModel)]="product.productDescription" name="productDescription" maxlength="50" placeholder="Description" required #description="ngModel">
+                <input type="text" class="form-control" [(ngModel)]="product.productDescription" name="productDescription" maxlength="255" placeholder="Description" required #description="ngModel">
                 <div class="alert alert-danger" *ngIf="description.invalid && (description.dirty || description.touched)">
                     <div *ngIf="description.errors.required">
                         The product name is required.
@@ -63,7 +63,7 @@
                 <div class="form-group col-md-12">
                     <label class="text-dark" for="productQuantity">Choose a Category</label>
                     <select class="form-control" id="productCategory" name="productCategory" (click)="selectCategories()" name="productCategory" [(ngModel)]="product.productCategory[0].productCategory">
-                        <option disabled selected>{{product.productCategory[0].productCategory}}</option>
+                        <option *ngIf="product.productCategory?.length>0" disabled selected>{{product.productCategory[0].productCategory}}</option>
                         <option *ngFor="let category of productCategories">{{category}}</option>
                     </select>
                 </div>

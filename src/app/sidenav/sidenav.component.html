@@ -42,17 +42,15 @@
 
                         <mat-nav-list>
                             <!--Barra de busqueda -->
-                            <a class="nav-link navbar-text ">
-                                <form>
-                                    <mat-form-field class="example-full-width">
-                                        <input type="text" placeholder="Search Product" aria-label="Number" matInput [formControl]="autocompleteControl" [matAutocomplete]="auto">
-                                        <mat-autocomplete #auto="matAutocomplete" [displayWith]="showProductName" (optionSelected)="selectProduct($event)">
-                                            <mat-option *ngFor="let productOption of filteredProducts | async" [value]="productOption">
-                                                {{productOption.productName}}
-                                            </mat-option>
-                                        </mat-autocomplete>
-                                    </mat-form-field>
-                                </form>
+                            <a class="nav-link navbar-text">
+                                <mat-form-field class="search">
+                                    <input class="btnInput" type="text" placeholder="Search Product" aria-label="Number" matInput [formControl]="autocompleteControl" [matAutocomplete]="auto">
+                                    <mat-autocomplete #auto="matAutocomplete" [displayWith]="showProductName" (optionSelected)="selectProduct($event)">
+                                        <mat-option *ngFor="let productOption of filteredProducts | async" [value]="productOption">
+                                            {{productOption.productName}}
+                                        </mat-option>
+                                    </mat-autocomplete>
+                                </mat-form-field>
                             </a>
 
                             <a class="nav-link navbar-text " [routerLink]="['/landing_page']">Home</a>

@@ -12,18 +12,20 @@
                                 <div class="carousel-inner" *ngIf="product.productImage?.length>0">
                                     <div class="carousel-item" *ngFor="let image of product.productImage; index as i; first as isFirst" [ngClass]="{active:isFirst}">
                                         <div class="d-flex justify-content-center">
-                                            <img class="d-block w-25" src="http://localhost:8080/renter/uploads/img/{{product.productImage[i].imageRoute}}" alt="image.imageRoute">
+                                            <img class="d-block mw-100" src="http://localhost:8080/renter/uploads/img/{{product.productImage[i].imageRoute}}" alt="image.imageRoute">
                                         </div>
                                     </div>
                                 </div>
-                                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Previous</span>
-                                </a>
-                                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Next</span>
-                                </a>
+                                <div *ngIf="product.productImage?.length>1">
+                                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -31,8 +33,13 @@
                                 <h3>{{product.productName}}</h3>
                                 <div class="rating">Product Rate: </div>
                                 <div class="price">
-                                    <h3>${{product.productPrice}}</h3>
-                                </div><button class="btn btn-primary" (click)="addToCart()" type="button"><i class="icon-basket"></i>Add to Cart</button>
+                                    <h3>${{product.productPrice}} MXN</h3>
+                                </div>
+                                <div>
+                                    <button class="btn customBtn" (click)="addToCart()" type="button">Add to Cart</button>
+                                    <button class="btn btn-primary ml-2" type="button" [routerLink]="['/landing_page']">Go Back</button>
+                                </div>
+
                                 <div class="summary">
                                     <p>
                                         {{product.productDescription}}
@@ -85,7 +92,7 @@
 
                                     <div class="card review-item" *ngFor="let comment of product.productComments; index as i; first as isFirst" [ngClass]="{active:isFirst}">
                                         <div class="card-header">
-                                            <span class="text-muted">{{product.productComments[i].productCommentDate}}</span>
+                                            <span class="text-muted">{{product.productComments[i].productCommentDate | date: 'mediumDate'}}</span>
                                         </div>
                                         <div class="card-body">
                                             <p>{{product.productComments[i].productComment}}</p>

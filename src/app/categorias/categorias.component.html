@@ -1,7 +1,8 @@
 <div class="container" id="Carpinteria">
     <div id="TituloCategoria" class="block-heading">
-        <h2 class="text-info">{{categoryName}}</h2>
-        <p>Nuevos Productos para cualquier caso de mecánica.</p>
+        <div class="d-flex justify-content-center">
+            <h2 class="text-info">{{categoryName}}</h2>
+        </div>
     </div>
     <div class="row justify-content-center">
         <div *ngFor="let productCategory of products" class="col-sm-12 col-md-4 col-lg-4 text-center">

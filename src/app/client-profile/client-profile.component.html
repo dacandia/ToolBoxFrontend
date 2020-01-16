@@ -5,8 +5,7 @@
 
             <div class="text-center">
                 <div class="col-sm-12">
-                    <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail"
-                        alt="avatar">
+                    <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
                 </div>
                 <hr><br>
             </div>
@@ -15,58 +14,59 @@
                     <div class="card">
                         <div class="card-header" style="background-color:#f92a19;">
                         </div>
-                    <div class="card-body text-center">
-                        <div class="row">
-                            <div class=" col-md-12 col-lg-12 ">
-                                        <mat-nav-list>
-                                            <a href="" mat-list-item routerLink="/paymentmethod" style="text-align: center;">Payment methods</a>
-                                            <a href="" mat-list-item routerLink="/user/order-history" style="text-align: center;">Order's history</a>
-                                            <a href="" mat-list-item routerLink="/profile/user/{id}/edit-info" style="text-align: left;">Edit the user's information</a>
-                                        </mat-nav-list>
+                        <div class="card-body text-center">
+                            <div class="row">
+                                <div class=" col-md-12 col-lg-12 ">
+                                    <mat-nav-list>
+                                        <a href="" mat-list-item routerLink="/paymentmethod" style="text-align: center;">Payment methods</a>
+                                        <a href="" mat-list-item routerLink="/user/order-history" style="text-align: center;">Order's history</a>
+                                        <a href="" mat-list-item routerLink="/profile/user/{id}/edit-info" style="text-align: left;">Edit the user's information</a>
+                                        <a href="" mat-list-item [routerLink]="['/products']" style="text-align: center;">Your Products</a>
+                                    </mat-nav-list>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        </div>
         <div class="col-sm-1"></div>
-                    <div class="col-sm-8">
-                        <div class="card">
-                            <div class="card-header" style="background-color: #062835;">
-                            </div>
-                            <div class="card-body text-center">
-                                
-                                    <div class=" col-md-12 col-lg-12 ">
-                                        <table class="table table-user-information text-center">
-                                            <tbody>
-                                                <tr>
-                                                    <td>First Name</td>
-                                                    <td>Juan</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Last Name</td>
-                                                    <td>Perez</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Address</td>
-                                                    <td>Oak Avenue #374</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Phone</td>
-                                                    <td>33847-95532</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Email</td>
-                                                    <td>juanperez43@gmail.com</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+        <div class="col-sm-8">
+            <div class="card">
+                <div class="card-header" style="background-color: #062835;">
+                </div>
+                <div class="card-body text-center">
 
-                                    </div>
-                                
-                            </div>
-                            <!--/col-9-->
-                        </div>
+                    <div class=" col-md-12 col-lg-12 ">
+                        <table class="table table-user-information text-center">
+                            <tbody>
+                                <tr>
+                                    <td>First Name</td>
+                                    <td>{{auth.usuario.userFullName}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Last Name</td>
+                                    <td>{{auth.usuario.userlastname}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Address</td>
+                                    <td>Oak Avenue #374</td>
+                                </tr>
+                                <tr>
+                                    <td>Phone</td>
+                                    <td>33847-95532</td>
+                                </tr>
+                                <tr>
+                                    <td>Email</td>
+                                    <td>{{auth.usuario.useremail}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
                     </div>
-                    <!--/row-->
+
+                </div>
+                <!--/col-9-->
+            </div>
+        </div>
+        <!--/row-->
