@@ -74,7 +74,7 @@ const routes: Routes = [
   {path: 'products/form', component: FormProductComponent},
   {path: 'products/form/:id', component: FormProductComponent},
   {path: 'products/upload/:id', component: ImageProductComponent},
-  {path: 'checkOutShoppingCart', component: ConfirmPaymentComponent}
+  {path: 'checkOutShoppingCart', component: ConfirmPaymentComponent},
   {path: 'profile/user/:id', component: ClientProfileComponent},
   {path: 'paymentmethod', component: PaymentMethodComponent},
   {path: 'paymentmethod/card', component: CardPaymentComponent},
