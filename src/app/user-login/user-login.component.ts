@@ -36,8 +36,8 @@ export class UserLoginComponent implements OnInit {
       this.authService.guardarUsuario(response.access_token);
       this.authService.guardarToken(response.access_token);
       let usuario = this.authService.usuario;
-      this.router.navigate(['/landing_page']);
       Swal.fire('Login', `Hola ${usuario.userFullName}, has iniciado sesión con éxito!`, 'success');
+      this.router.navigate(['/landing_page']);  
     }, err => {
       if (err.status == 400) {
         Swal.fire('Error Login', 'Usuario o clave incorrectas!', 'error');
