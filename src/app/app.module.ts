@@ -49,6 +49,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { UsersAdministrationComponent } from './users-administration/users-administration.component';
+import { ConfirmPaymentComponent } from './confirm-payment/confirm-payment.component';
 
 
 const routes: Routes = [
@@ -66,7 +68,8 @@ const routes: Routes = [
   {path: 'products/form', component: FormProductComponent},
   {path: 'products/form/:id', component: FormProductComponent},
   {path: 'products/upload/:id', component: ImageProductComponent},
-  {path: 'shoppingCard', component: ShoppingCartComponent}
+  {path: 'shoppingCard', component: ShoppingCartComponent},
+  {path: 'checkOutShoppingCart', component: ConfirmPaymentComponent}
 ]
 
 @NgModule({
@@ -84,7 +87,9 @@ const routes: Routes = [
     UserLoginComponent,
     UserRegisterComponent,
     ClientProfileComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    UsersAdministrationComponent,
+    ConfirmPaymentComponent
   ],
   imports: [
     BrowserModule,

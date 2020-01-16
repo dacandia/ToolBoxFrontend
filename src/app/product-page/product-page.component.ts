@@ -7,6 +7,7 @@ import { ProductService } from '../product/product.service';
 import { Product } from '../product/product';
 import { ProductComment } from '../product/productComment';
 import swal from 'sweetalert2';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-product-page',
@@ -61,7 +62,8 @@ export class ProductPageComponent implements OnInit {
             this._cartsItems.push(this._cartItem);
             localStorage.setItem(
               'cart',JSON.stringify(this._cartsItems)
-            )      
+            )
+            Swal.fire('Added to cart',this._cartItem.productName +" added" ,'success');      
           } 
         )
          
